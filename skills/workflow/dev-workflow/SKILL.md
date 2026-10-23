@@ -23,7 +23,7 @@ Say the size and the phases in one line, e.g. `Standard task. Phases: analysis, 
 | 1 | **Analysis** | Read the request and the code. Find facts yourself (do not ask what you can look up). List unknowns and non-goals. | Problem statement (3 to 6 lines), acceptance criteria, open questions | Engineer confirms the understanding |
 | 2 | **Grill** | Interview the engineer until nothing important is assumed. Use the `grill-me` skill if installed, otherwise follow [the built-in grill](#the-built-in-grill). | Decisions list | Engineer says go |
 | 3 | **Design** | Compare at least two options for non-trivial work. Pick one. List files and interfaces touched, test strategy, risks, rollback. Write an ADR (`adr-writing`) for hard-to-reverse choices. | Plan as small ordered steps, each verifiable | Engineer approves the plan |
-| 4 | **Implementation** | Work in thin slices. Test first where it fits (`tdd`, `test-driven-development`). One logical change per commit. Note out-of-scope findings instead of fixing them. Run build and lint after each slice. | Working code | All plan steps done, build and lint pass |
+| 4 | **Implementation** | Work in thin slices. Test first where it fits (`tdd`, `test-driven-development`). One logical change per commit. Note out-of-scope findings instead of fixing them. Run build and lint (`run-linter`) after each slice. | Working code | All plan steps done, build and lint pass |
 | 5 | **Testing** | The agent checks it built the thing right. Run the relevant suites, add missing tests (use `software-testing-fundamentals` to find gaps), add a regression test for every bug. Evidence before claims (`verification-before-completion`). | Test results, list of what is not tested | Tests pass, gaps stated honestly |
 | 6 | **Validation** | The engineer checks it is the right thing and that they own it. Check each acceptance criterion with evidence, self-review the diff, open the PR (`create-pull-request`), then run the `understanding-exam`. | PR link, exam result | Criteria met, exam passed or waived by the engineer |
 | 7 | **Done** | Summarize what changed, what was decided, follow-ups. Optional short retro. | Final report | n/a |
@@ -53,7 +53,7 @@ Always grill, even for small tasks, when the request is ambiguous, touches secur
 | --- | --- | --- |
 | Grill | `grill-me` | built-in grill above |
 | Design | `living-specs`, `adr-writing` | options table in chat |
-| Implementation | `tdd` or `test-driven-development`, language skills | red-green-refactor by hand |
+| Implementation | `tdd` or `test-driven-development`, `run-linter`, language skills | red-green-refactor by hand, run the project's linter |
 | Testing | `software-testing-fundamentals`, `verification-before-completion` | run the suite, read the output |
 | Validation | `create-pull-request`, `understanding-exam`, `code-review` | PR template in `create-pull-request` |
 

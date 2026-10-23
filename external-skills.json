@@ -2056,6 +2056,19 @@
       ],
       "usage": "In the agent: /graphify .   Then: graphify query \"<question>\", graphify path A B, graphify explain X",
       "note": "Run the install commands from the project root. The PyPI package is graphifyy (two y). The README promotes a paid Graphify Cloud; the local CLI is free. Savings numbers are the vendor's claims."
+    },
+    {
+      "id": "swiftlint",
+      "category": "swift",
+      "topic": "linting",
+      "default": false,
+      "license": "NOASSERTION",
+      "source": {
+        "repo": "dpearson2699/swift-ios-skills",
+        "path": "skills/swiftlint",
+        "ref": "main"
+      },
+      "description": "Configures and enforces SwiftLint in Swift projects using build tool plugins, run scripts, and CI. Covers .swiftlint.yml configuration, disabled_rules, opt_in_rules, only_rules, analyzer_rules, baselines, autocorrect, ..."
     }
   ]
 }

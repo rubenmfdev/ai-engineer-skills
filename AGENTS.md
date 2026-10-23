@@ -21,7 +21,7 @@ Detect what it uses before choosing. Examples:
 - Architecture or decision-record work -> `system-design`
 
 ## 3. Choose skills
-Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: TDD, security, code review, git, docs), `testing` (testing theory), `workflow` (how the agent works: phases, grill-me, PRs, exam, specs), `efficiency` (tools that cut token usage).
+Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: linting, TDD, security, code review, git, docs), `testing` (testing theory), `workflow` (how the agent works: phases, grill-me, PRs, exam, specs), `efficiency` (tools that cut token usage).
 
 Chrome extension topics: `scaffold`, `development`, `manifest`, `security`, `publishing`, `testing`, `ui`, `framework` (pick the one matching the project's build tool: WXT, Plasmo, CRXJS), `migration`, `assets`, `backend`, `payments`, `debugging`.
 

@@ -36,6 +36,7 @@ For everything else, the best skills already exist, so use them instead of re-wr
 ## Build and tooling
 | Skill | Author |
 | --- | --- |
+| [SwiftLint](https://github.com/dpearson2699/swift-ios-skills/tree/main/skills/swiftlint) (optional, license not declared) | Daniel Pearson | SwiftLint config, plugins, CI, baselines |
 | [Xcode Build Optimization](https://github.com/AvdLee/Xcode-Build-Optimization-Agent-Skill) | Antoine van der Lee |
 | [iOS Simulator Skill](https://github.com/conorluddy/ios-simulator-skill) | Conor Luddy |
 | [Figma to SwiftUI](https://github.com/daetojemax/figma-to-swiftui-skill) | Ermolaev Maxim |

@@ -24,6 +24,7 @@ Skills written in this repo:
 | [typescript-conventions](skills/languages/javascript/typescript-conventions) | JavaScript | Strict TypeScript, modules, error handling and tooling |
 | [mv3-extension-development](skills/platforms/chrome-extensions/mv3-extension-development) | Chrome extensions | Manifest V3 architecture, service workers, messaging, storage |
 | [extension-security-and-publishing](skills/platforms/chrome-extensions/extension-security-and-publishing) | Chrome extensions | Least-privilege permissions, CSP and Chrome Web Store review |
+| [run-linter](skills/general/run-linter) | General | Find and run the project's linters, fix causes not rules, never silence errors |
 | [dev-workflow](skills/workflow/dev-workflow) | Workflow | Phases with gates, grill-me before building, PR and exam before done |
 | [create-pull-request](skills/workflow/create-pull-request) | Workflow | Preflight, PR description template, draft PR via gh |
 | [living-specs](skills/workflow/living-specs) | Workflow | Specs stored in the repo with an index, lifecycle and lint |

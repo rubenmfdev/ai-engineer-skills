@@ -14,7 +14,7 @@ git log --oneline <base>..HEAD
 ```
 - Find the base branch (`git symbolic-ref refs/remotes/origin/HEAD`). Do not assume `main`.
 - Look for files that do not belong: debug code, `.env`, secrets, build output, unrelated formatting. Remove them.
-- Run the project's build, lint and tests. Keep the exact commands and results for the description. If anything fails, stop and report. Do not open a PR over red checks unless the user says so.
+- Run the project's build, lint (`run-linter`) and tests. Keep the exact commands and results for the description. If anything fails, stop and report. Do not open a PR over red checks unless the user says so.
 - Read your own diff as a reviewer would. Fix what you would flag.
 - If the diff is much more than about 400 changed lines or mixes concerns, propose splitting it.
 
