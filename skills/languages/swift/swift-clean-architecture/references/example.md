@@ -1,0 +1,162 @@
+# Example vertical slice: Orders
+
+## Domain
+```swift
+// Entity
+struct Order: Identifiable, Equatable, Sendable {
+    let id: String
+    let total: Decimal
+    let placedAt: Date
+    let status: Status
+    enum Status: Sendable { case pending, shipped, delivered, cancelled }
+}
+
+enum OrderError: Error, Sendable { case offline, notFound, unknown }
+
+// Repository protocol (owned by Domain)
+protocol OrderRepository: Sendable {
+    func orders() async throws -> [Order]
+}
+
+// Use case
+struct GetOrdersUseCase: Sendable {
+    let repository: OrderRepository
+    func callAsFunction() async throws -> [Order] {
+        try await repository.orders().sorted { $0.placedAt > $1.placedAt }
+    }
+}
+```
+
+## Data
+```swift
+// DTO: matches the API, stays inside Data
+struct OrderDTO: Decodable, Sendable {
+    let id: String
+    let total_cents: Int
+    let placed_at: Date
+    let status: String
+}
+
+// Mapper
+enum OrderMapper {
+    static func map(_ dto: OrderDTO) -> Order {
+        Order(
+            id: dto.id,
+            total: Decimal(dto.total_cents) / 100,
+            placedAt: dto.placed_at,
+            status: Order.Status(rawValue: dto.status) ?? .pending
+        )
+    }
+}
+private extension Order.Status {
+    init?(rawValue: String) {
+        switch rawValue {
+        case "shipped": self = .shipped
+        case "delivered": self = .delivered
+        case "cancelled": self = .cancelled
+        case "pending": self = .pending
+        default: return nil
+        }
+    }
+}
+
+// Data source
+protocol OrderRemoteDataSource: Sendable {
+    func fetchOrders() async throws -> [OrderDTO]
+}
+
+struct URLSessionOrderRemoteDataSource: OrderRemoteDataSource {
+    let client: HTTPClient
+    func fetchOrders() async throws -> [OrderDTO] {
+        try await client.get("/orders")
+    }
+}
+
+// Repository implementation
+struct OrderRepositoryImpl: OrderRepository {
+    let remote: OrderRemoteDataSource
+    // let local: OrderLocalDataSource   // add a cache when needed
+
+    func orders() async throws -> [Order] {
+        do {
+            return try await remote.fetchOrders().map(OrderMapper.map)
+        } catch let error as URLError where error.code == .notConnectedToInternet {
+            throw OrderError.offline
+        } catch {
+            throw OrderError.unknown
+        }
+    }
+}
+```
+
+## Presentation
+```swift
+struct OrderRow: Identifiable {
+    let id: String
+    let title: String
+    let subtitle: String
+    init(_ order: Order) {
+        id = order.id
+        title = order.total.formatted(.currency(code: "EUR"))
+        subtitle = order.placedAt.formatted(date: .abbreviated, time: .omitted)
+    }
+}
+
+struct OrdersView: View {
+    @State var viewModel: OrdersViewModel
+    var body: some View {
+        Group {
+            switch viewModel.state {
+            case .idle, .loading: ProgressView()
+            case .loaded(let rows): List(rows) { Text($0.title) }
+            case .failed(let message): ContentUnavailableView(message, systemImage: "wifi.slash")
+            }
+        }
+        .task { await viewModel.load() }
+    }
+}
+```
+
+## Composition root
+```swift
+@main struct MyApp: App {
+    private let container = DIContainer()
+    var body: some Scene {
+        WindowGroup { OrdersView(viewModel: container.makeOrdersViewModel()) }
+    }
+}
+
+final class DIContainer {
+    private let client = HTTPClient(baseURL: URL(string: "https://api.example.com")!)
+    func makeOrdersViewModel() -> OrdersViewModel {
+        let repo = OrderRepositoryImpl(remote: URLSessionOrderRemoteDataSource(client: client))
+        return OrdersViewModel(getOrders: GetOrdersUseCase(repository: repo))
+    }
+}
+```
+
+## Test sketch
+```swift
+struct FakeOrderRepository: OrderRepository {
+    var result: Result<[Order], OrderError>
+    func orders() async throws -> [Order] { try result.get() }
+}
+
+@Test @MainActor func showsFailureWhenOffline() async {
+    let vm = OrdersViewModel(getOrders: GetOrdersUseCase(repository: FakeOrderRepository(result: .failure(.offline))))
+    await vm.load()
+    guard case .failed = vm.state else { return Issue.record("expected failed") }
+}
+```
+
+## Package layout (optional, enforces the rule)
+```swift
+// Package.swift (sketch)
+targets: [
+    .target(name: "OrdersDomain"),                                   // no dependencies
+    .target(name: "OrdersData", dependencies: ["OrdersDomain"]),
+    .target(name: "OrdersPresentation", dependencies: ["OrdersDomain"]),
+    .testTarget(name: "OrdersDomainTests", dependencies: ["OrdersDomain"]),
+]
+```
+Presentation never depends on Data. Only the app target imports all three and wires them together.

@@ -8,13 +8,14 @@ A curated collection of agent skills for software engineers, covering languages,
 
 | Skill | Category | What it does |
 | --- | --- | --- |
-| [swiftui-best-practices](skills/languages/swift/swiftui-best-practices) | Swift | State, view composition, navigation and performance in SwiftUI |
-| [swift-concurrency](skills/languages/swift/swift-concurrency) | Swift | async/await, actors, Sendable and migrating to Swift 6 |
+| [swift-clean-architecture](skills/languages/swift/swift-clean-architecture) | Swift | Views, view models, use cases, repositories, data sources, entities, DTOs |
 | [typescript-conventions](skills/languages/javascript/typescript-conventions) | JavaScript | Strict TypeScript, modules, error handling and tooling |
 | [mv3-extension-development](skills/platforms/chrome-extensions/mv3-extension-development) | Chrome extensions | Manifest V3 architecture, service workers, messaging, storage |
 | [extension-security-and-publishing](skills/platforms/chrome-extensions/extension-security-and-publishing) | Chrome extensions | Least-privilege permissions, CSP and Chrome Web Store review |
 | [adr-writing](skills/system-design/adr-writing) | System design | Write and review architecture decision records |
 | [github-actions-ci](skills/devops/github-actions-ci) | DevOps | Fast, secure GitHub Actions pipelines |
+
+For SwiftUI, concurrency, testing, Core Data and more, see the [curated Swift skills index](skills/languages/swift/README.md). Those skills are maintained by others, so they are linked rather than copied.
 
 Planned categories: mobile, testing, security, design, AI engineering, git workflow. See [skills/](skills).
 
