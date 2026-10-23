@@ -21,7 +21,7 @@ Detect what it uses before choosing. Examples:
 - Architecture or decision-record work -> `system-design`
 
 ## 3. Choose skills
-Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: TDD, security, code review, git, docs).
+Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: TDD, security, code review, git, docs), `testing` (testing theory), `workflow` (how the agent works: phases, grill-me, PRs, exam).
 
 Chrome extension topics: `scaffold`, `development`, `manifest`, `security`, `publishing`, `testing`, `ui`, `framework` (pick the one matching the project's build tool: WXT, Plasmo, CRXJS), `migration`, `assets`, `backend`, `payments`, `debugging`.
 
@@ -32,6 +32,7 @@ Swift topics: `own`, `swiftui`, `concurrency`, `testing`, `persistence`, `build`
 Rules of thumb:
 - Install the **default** skills of the matching categories. Entries not marked `default` are optional or alternatives (for example a second SwiftUI skill), so add them only on request or when the project clearly needs them.
 - Skip topics the project does not use. No Core Data or SwiftData skill if the app has no persistence. No `store` skills for a library. No `tooling` Figma skill without Figma.
+- `workflow` skills change how the agent behaves (they add gates and interviews). Install them only when the user asks for a process or says they want that control; otherwise mention that the category exists. Do not install a second workflow framework next to `dev-workflow`.
 - Prefer fewer, relevant skills. Every installed skill adds its description to the agent's context.
 
 ## 4. Install

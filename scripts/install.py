@@ -68,6 +68,15 @@ def select(entries, a):
         if not (e["default"] or a.all):
             continue
         out.append(e)
+    by_id = {e["id"]: e for e in entries}
+    seen = {e["id"] for e in out}
+    queue = list(out)
+    while queue:
+        for dep in queue.pop().get("requires", []):
+            if dep not in seen:
+                seen.add(dep)
+                out.append(by_id[dep])
+                queue.append(by_id[dep])
     return out
 
 

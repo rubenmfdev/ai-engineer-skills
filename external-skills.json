@@ -1130,6 +1130,338 @@
         "ref": "main"
       },
       "description": "Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate quality gates, configure test runners in CI, or establish deployment strategies."
+    },
+    {
+      "id": "grill-me",
+      "category": "workflow",
+      "topic": "grill",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/productivity/grill-me",
+        "ref": "main"
+      },
+      "description": "A relentless interview to sharpen a plan or design.",
+      "requires": [
+        "grilling"
+      ]
+    },
+    {
+      "id": "grilling",
+      "category": "workflow",
+      "topic": "grill",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/productivity/grilling",
+        "ref": "main"
+      },
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases."
+    },
+    {
+      "id": "grill-with-docs",
+      "category": "workflow",
+      "topic": "grill",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/grill-with-docs",
+        "ref": "main"
+      },
+      "description": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "requires": [
+        "grilling",
+        "domain-modeling"
+      ]
+    },
+    {
+      "id": "domain-modeling",
+      "category": "workflow",
+      "topic": "design",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/domain-modeling",
+        "ref": "main"
+      },
+      "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR."
+    },
+    {
+      "id": "to-spec",
+      "category": "workflow",
+      "topic": "planning",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/to-spec",
+        "ref": "main"
+      },
+      "description": "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed."
+    },
+    {
+      "id": "to-tickets",
+      "category": "workflow",
+      "topic": "planning",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/to-tickets",
+        "ref": "main"
+      },
+      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker (edges as text in one file per ticket locally, or native blocking links on a..."
+    },
+    {
+      "id": "pr",
+      "category": "workflow",
+      "topic": "pull-request",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/pr",
+        "ref": "main"
+      },
+      "description": "Use when writing a PR body."
+    },
+    {
+      "id": "code-review",
+      "category": "workflow",
+      "topic": "review",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/code-review",
+        "ref": "main"
+      },
+      "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked..."
+    },
+    {
+      "id": "diagnosing-bugs",
+      "category": "workflow",
+      "topic": "debugging",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/diagnosing-bugs",
+        "ref": "main"
+      },
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow."
+    },
+    {
+      "id": "retro",
+      "category": "workflow",
+      "topic": "retro",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/retro",
+        "ref": "main"
+      },
+      "description": "Conduct a retrospective on a coding session."
+    },
+    {
+      "id": "handoff",
+      "category": "workflow",
+      "topic": "handoff",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/productivity/handoff",
+        "ref": "main"
+      },
+      "description": "Compact the current conversation into a handoff document for another agent to pick up."
+    },
+    {
+      "id": "verification-before-completion",
+      "category": "workflow",
+      "topic": "verification",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/verification-before-completion",
+        "ref": "main"
+      },
+      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always"
+    },
+    {
+      "id": "brainstorming",
+      "category": "workflow",
+      "topic": "design",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/brainstorming",
+        "ref": "main"
+      },
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, modifying behavior, or planning anything new, in software or out of it (a talk, a business, a renovation)."
+    },
+    {
+      "id": "writing-plans",
+      "category": "workflow",
+      "topic": "planning",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/writing-plans",
+        "ref": "main"
+      },
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code"
+    },
+    {
+      "id": "executing-plans",
+      "category": "workflow",
+      "topic": "implementation",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/executing-plans",
+        "ref": "main"
+      },
+      "description": "Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is available"
+    },
+    {
+      "id": "systematic-debugging",
+      "category": "workflow",
+      "topic": "debugging",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/systematic-debugging",
+        "ref": "main"
+      },
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes"
+    },
+    {
+      "id": "finishing-a-development-branch",
+      "category": "workflow",
+      "topic": "pull-request",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/finishing-a-development-branch",
+        "ref": "main"
+      },
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work"
+    },
+    {
+      "id": "requesting-code-review",
+      "category": "workflow",
+      "topic": "review",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/requesting-code-review",
+        "ref": "main"
+      },
+      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements"
+    },
+    {
+      "id": "receiving-code-review",
+      "category": "workflow",
+      "topic": "review",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "obra/superpowers",
+        "path": "skills/receiving-code-review",
+        "ref": "main"
+      },
+      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation"
+    },
+    {
+      "id": "spec-driven-development",
+      "category": "workflow",
+      "topic": "planning",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/spec-driven-development",
+        "ref": "main"
+      },
+      "description": "Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use when drafting a PRD or requirements document with objectives and scope, or when requirements are unclear,..."
+    },
+    {
+      "id": "planning-and-task-breakdown",
+      "category": "workflow",
+      "topic": "planning",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/planning-and-task-breakdown",
+        "ref": "main"
+      },
+      "description": "Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Use when a task feels too large to start, when you need to estimate scope, or when parallel work is possible."
+    },
+    {
+      "id": "interview-me",
+      "category": "workflow",
+      "topic": "grill",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/interview-me",
+        "ref": "main"
+      },
+      "description": "Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time interview until ~95% confidence about the underlying intent. Use when an ask is underspecified (\"build me X\"..."
+    },
+    {
+      "id": "incremental-implementation",
+      "category": "workflow",
+      "topic": "implementation",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/incremental-implementation",
+        "ref": "main"
+      },
+      "description": "Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one file, or when picking up the next task from a plan. Use when rolling a change out behind a feature flag,..."
+    },
+    {
+      "id": "debugging-and-error-recovery",
+      "category": "workflow",
+      "topic": "debugging",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/debugging-and-error-recovery",
+        "ref": "main"
+      },
+      "description": "Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't match expectations, or you encounter any unexpected error. Use when you need to figure out what broke and..."
+    },
+    {
+      "id": "shipping-and-launch",
+      "category": "workflow",
+      "topic": "release",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/shipping-and-launch",
+        "ref": "main"
+      },
+      "description": "Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping. Use when you need a pre-launch checklist, when setting up monitoring, when planning a staged rollout, or..."
     }
   ]
 }

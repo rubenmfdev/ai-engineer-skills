@@ -24,10 +24,14 @@ Skills written in this repo:
 | [typescript-conventions](skills/languages/javascript/typescript-conventions) | JavaScript | Strict TypeScript, modules, error handling and tooling |
 | [mv3-extension-development](skills/platforms/chrome-extensions/mv3-extension-development) | Chrome extensions | Manifest V3 architecture, service workers, messaging, storage |
 | [extension-security-and-publishing](skills/platforms/chrome-extensions/extension-security-and-publishing) | Chrome extensions | Least-privilege permissions, CSP and Chrome Web Store review |
+| [dev-workflow](skills/workflow/dev-workflow) | Workflow | Phases with gates, grill-me before building, PR and exam before done |
+| [create-pull-request](skills/workflow/create-pull-request) | Workflow | Preflight, PR description template, draft PR via gh |
+| [understanding-exam](skills/workflow/understanding-exam) | Workflow | Exam for the engineer on the issue and solution |
+| [software-testing-fundamentals](skills/testing/software-testing-fundamentals) | Testing | Black-box, white-box, coverage, test levels, mutation testing |
 | [adr-writing](skills/system-design/adr-writing) | System design | Write and review architecture decision records |
 | [github-actions-ci](skills/devops/github-actions-ci) | DevOps | Fast, secure GitHub Actions pipelines |
 
-Curated external skills: [Swift](skills/languages/swift/README.md), [JavaScript](skills/languages/javascript/README.md), [Chrome extensions](skills/platforms/chrome-extensions/README.md). Those skills are maintained by others, so they are linked rather than copied.
+Curated external skills: [Workflow](skills/workflow/README.md), [Swift](skills/languages/swift/README.md), [JavaScript](skills/languages/javascript/README.md), [Chrome extensions](skills/platforms/chrome-extensions/README.md). Those skills are maintained by others, so they are linked rather than copied.
 
 Planned categories: mobile, testing, security, design, AI engineering, git workflow. See [skills/](skills).
 

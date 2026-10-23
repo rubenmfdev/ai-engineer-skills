@@ -64,6 +64,10 @@ def check_external():
         if e.get("id") in seen or e.get("id") in local:
             errs.append("external %s: duplicate id" % e.get("id"))
         seen.add(e.get("id"))
+    for e in data["skills"]:
+        for dep in e.get("requires", []):
+            if dep not in seen and dep not in local:
+                errs.append("external %s: requires unknown skill %s" % (e["id"], dep))
     for e in errs:
         print("ERROR external-skills.json: %s" % e)
     return len(errs)
