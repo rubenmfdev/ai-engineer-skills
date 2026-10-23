@@ -13,6 +13,7 @@ Requires `git` and Python 3. Nothing else.
 
 ## 2. Look at the user's project
 Detect what it uses before choosing. Examples:
+- Any code project -> also consider `general`
 - `*.xcodeproj`, `Package.swift`, `*.swift` -> category `swift`
 - `package.json`, `tsconfig.json` -> `javascript`
 - `manifest.json` with `manifest_version` -> `chrome-extensions`
@@ -20,7 +21,11 @@ Detect what it uses before choosing. Examples:
 - Architecture or decision-record work -> `system-design`
 
 ## 3. Choose skills
-Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`.
+Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: TDD, security, code review, git, docs).
+
+Chrome extension topics: `scaffold`, `development`, `manifest`, `security`, `publishing`, `testing`, `ui`, `framework` (pick the one matching the project's build tool: WXT, Plasmo, CRXJS), `migration`, `assets`, `backend`, `payments`, `debugging`.
+
+JavaScript topics: `language`, `react`, `nextjs`, `react-native`, `design`, `ui`, `testing`, `ai`.
 
 Swift topics: `own`, `swiftui`, `concurrency`, `testing`, `persistence`, `build`, `security`, `accessibility`, `store`, `language`, `tooling`, `architecture`, `platform`.
 

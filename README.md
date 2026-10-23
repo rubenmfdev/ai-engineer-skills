@@ -12,7 +12,7 @@ Open your project in Claude Code (or another agent) and say:
 
 The agent clones this repo, looks at your project (Swift, JavaScript, Chrome extension, ...), picks the matching skills and installs them into `./.claude/skills`. See [AGENTS.md](AGENTS.md) for what it does.
 
-The catalog covers skills written here plus a curated set of external ones (SwiftUI, concurrency, testing, security, accessibility, App Store, tooling and more). External skills are fetched from their authors' repos, not copied here. They are listed in [external-skills.json](external-skills.json).
+The catalog covers skills written here plus a curated set of external ones (Swift, React/TypeScript, Chrome extensions, general engineering practices and more). External skills are fetched from their authors' repos, not copied here. They are listed in [external-skills.json](external-skills.json).
 
 ## Catalog
 
@@ -27,7 +27,7 @@ Skills written in this repo:
 | [adr-writing](skills/system-design/adr-writing) | System design | Write and review architecture decision records |
 | [github-actions-ci](skills/devops/github-actions-ci) | DevOps | Fast, secure GitHub Actions pipelines |
 
-For SwiftUI, concurrency, testing, Core Data and more, see the [curated Swift skills index](skills/languages/swift/README.md). Those skills are maintained by others, so they are linked rather than copied.
+Curated external skills: [Swift](skills/languages/swift/README.md), [JavaScript](skills/languages/javascript/README.md), [Chrome extensions](skills/platforms/chrome-extensions/README.md). Those skills are maintained by others, so they are linked rather than copied.
 
 Planned categories: mobile, testing, security, design, AI engineering, git workflow. See [skills/](skills).
 

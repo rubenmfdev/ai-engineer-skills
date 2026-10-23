@@ -572,6 +572,564 @@
         "ref": "master"
       },
       "description": "Implement or update iOS SwiftUI UI from Figma designs; also use for implementation plans, token mapping, or asset export for that UI."
+    },
+    {
+      "id": "extension-create",
+      "category": "chrome-extensions",
+      "topic": "scaffold",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-create",
+        "ref": "main"
+      },
+      "description": "Auto-scaffold Chrome extensions with WXT or CRXJS. Ask user for name/features, scaffold, configure entrypoints. Use when: create extension, scaffold, new extension.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-dev",
+      "category": "chrome-extensions",
+      "topic": "development",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-dev",
+        "ref": "main"
+      },
+      "description": "Detect Chrome extension framework/stack, find proper docs, implement features, and debug across service worker, content script, and popup contexts.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-manifest",
+      "category": "chrome-extensions",
+      "topic": "manifest",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-manifest",
+        "ref": "main"
+      },
+      "description": "Generate and validate manifest.json with optimal permissions for Chrome MV3 extensions. Analyzes code to determine minimum permissions. Use when: manifest, permissions, manifest.json.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-analyze",
+      "category": "chrome-extensions",
+      "topic": "security",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-analyze",
+        "ref": "main"
+      },
+      "description": "Audit Chrome extensions for security issues, best practice violations, performance problems, and CWS compliance. Scans manifest, code, CSP, message handlers, storage, and dependencies.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-review",
+      "category": "chrome-extensions",
+      "topic": "publishing",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-review",
+        "ref": "main"
+      },
+      "description": "Scan extension source code for Chrome Web Store rejection risks. Generates report with issues, root causes, and fixes. Use when: review, pre-submit, rejection, CWS compliance, store review.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-publish",
+      "category": "chrome-extensions",
+      "topic": "publishing",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-publish",
+        "ref": "main"
+      },
+      "description": "Prepare, submit, and optimize Chrome Web Store listings. Covers workflow, checklist, rejection reasons, listing optimization, and CI/CD automation.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-test",
+      "category": "chrome-extensions",
+      "topic": "testing",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-test",
+        "ref": "main"
+      },
+      "description": "Set up and run unit, integration, and E2E tests for Chrome extensions. Covers Jest mocks for chrome.* APIs and Puppeteer E2E with real Chrome.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-ui",
+      "category": "chrome-extensions",
+      "topic": "ui",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-ui",
+        "ref": "main"
+      },
+      "description": "Build polished Chrome extension UIs (popup/sidepanel/options). Analyze existing UI, suggest improvements, set up design systems, enforce a11y and UX best practices.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-migration",
+      "category": "chrome-extensions",
+      "topic": "migration",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-migration",
+        "ref": "main"
+      },
+      "description": "Migrate Chrome extensions from MV2 to MV3. Service workers, declarativeNetRequest, API replacements. Use when: migrate, mv2, mv3, manifest v2.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-assets",
+      "category": "chrome-extensions",
+      "topic": "assets",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-assets",
+        "ref": "main"
+      },
+      "description": "Generate and manage all Chrome extension assets: icons (16–128px), CWS listing images, promotional tiles, and public/ folder setup. Supports ImageMagick, Gemini API, and manual prompt templates.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-backend",
+      "category": "chrome-extensions",
+      "topic": "backend",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-backend",
+        "ref": "main"
+      },
+      "description": "Build backend APIs for Chrome extensions. NestJS + MongoDB (Mongoose) recommended stack. Auth, webhooks, license verification, CORS. Use when: backend, API, server, database, license, webhook.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "extension-payment",
+      "category": "chrome-extensions",
+      "topic": "payments",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "quangpl/browser-extension-skills",
+        "path": "skills/extension-payment",
+        "ref": "main"
+      },
+      "description": "Integrate payment gateways into Chrome extensions. Stripe, Paddle, Lemon Squeezy, Polar, PayPal, and more. Licensing, subscriptions, freemium. Use when: payment, monetize, subscribe, billing, premium.",
+      "note": "Sponsored by Extension Booster; skills credit the sponsor."
+    },
+    {
+      "id": "chrome-web-store-listing",
+      "category": "chrome-extensions",
+      "topic": "publishing",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "thomaslimited/chrome-extension-skills",
+        "path": "skills/chrome-web-store-listing",
+        "ref": "main"
+      },
+      "description": "Use whenever the user needs a Chrome Web Store submission ready — listing copy, permission justifications, Privacy practices tab, privacy policy page, store screenshots, or promo tiles. Triggers: \"chrome web store listing\", \"store..."
+    },
+    {
+      "id": "chrome-extension-dev",
+      "category": "chrome-extensions",
+      "topic": "development",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "thomaslimited/chrome-extension-skills",
+        "path": "skills/chrome-extension-dev",
+        "ref": "main"
+      },
+      "description": "Use to build, scaffold, or debug a Chrome/Edge/Brave extension — Manifest V3, a WXT project, a content script, a background service worker, popup/options UI, chrome.storage, message passing, or in-page floating UI. Trigger phrases:..."
+    },
+    {
+      "id": "chrome-extension-auth",
+      "category": "chrome-extensions",
+      "topic": "backend",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "thomaslimited/chrome-extension-skills",
+        "path": "skills/chrome-extension-auth",
+        "ref": "main"
+      },
+      "description": "Add user accounts to a Chrome MV3 extension with a backend. Covers Google SSO via chrome.identity.launchWebAuthFlow (OIDC id_token + server nonce, JWKS verification with jose) and manual email/password sign-in (argon2id hashing, email..."
+    },
+    {
+      "id": "chrome-extension-deploy",
+      "category": "chrome-extensions",
+      "topic": "backend",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "thomaslimited/chrome-extension-skills",
+        "path": "skills/chrome-extension-deploy",
+        "ref": "main"
+      },
+      "description": "Use to deploy a Chrome extension backend (API + Postgres + admin dashboard) to a VPS, or publish/release a new extension version. Triggers: \"deploy extension backend\", \"VPS docker nginx\", \"let's encrypt cloudflare 521\", \"publish..."
+    },
+    {
+      "id": "wxt-extension-dev",
+      "category": "chrome-extensions",
+      "topic": "framework",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "gandli/browser-extension-skills",
+        "path": "development/wxt-extension-dev",
+        "ref": "main"
+      },
+      "description": "Build, test, and publish Chrome/Firefox extensions with the WXT framework (Vite-powered MV3). Use when the user mentions WXT, `wxt.config.ts`, `entrypoints/`, `wxt dev`, `wxt build`, `wxt zip`, or wants a modern build-tool-based..."
+    },
+    {
+      "id": "plasmo-extension-dev",
+      "category": "chrome-extensions",
+      "topic": "framework",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "gandli/browser-extension-skills",
+        "path": "development/plasmo-extension-dev",
+        "ref": "main"
+      },
+      "description": "Build Chrome/Firefox extensions with Plasmo SDK (React/TS-first, declarative manifests, CSUI). Use when the user mentions Plasmo, `src/`-based extension structure, `@plasmohq/storage`, content-script UI components, or Plasmo's..."
+    },
+    {
+      "id": "crxjs-extension-dev",
+      "category": "chrome-extensions",
+      "topic": "framework",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "gandli/browser-extension-skills",
+        "path": "development/crxjs-extension-dev",
+        "ref": "main"
+      },
+      "description": "Build Chrome extensions with CRXJS Vite plugin (true HMR, content-script HMR, zero-config MV3). Use when the user mentions CRXJS, `@crxjs/vite-plugin`, `npm create crxjs`, or wants Vite-native HMR in content scripts. Route E2E to..."
+    },
+    {
+      "id": "chrome-for-testing-extensions",
+      "category": "chrome-extensions",
+      "topic": "testing",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "gandli/browser-extension-skills",
+        "path": "testing/chrome-for-testing-extensions",
+        "ref": "main"
+      },
+      "description": "Load unpacked extension over CDP via Chrome for Testing."
+    },
+    {
+      "id": "chrome-devtools",
+      "category": "chrome-extensions",
+      "topic": "debugging",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "gandli/browser-extension-skills",
+        "path": "debugging/chrome-devtools",
+        "ref": "main"
+      },
+      "description": "Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automating browser interactions, analyzing performance, or inspecting network requests. This skill does not..."
+    },
+    {
+      "id": "vercel-react-best-practices",
+      "category": "javascript",
+      "topic": "react",
+      "default": true,
+      "license": "NONE",
+      "source": {
+        "repo": "vercel-labs/agent-skills",
+        "path": "skills/react-best-practices",
+        "ref": "main"
+      },
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving..."
+    },
+    {
+      "id": "vercel-composition-patterns",
+      "category": "javascript",
+      "topic": "react",
+      "default": true,
+      "license": "NONE",
+      "source": {
+        "repo": "vercel-labs/agent-skills",
+        "path": "skills/composition-patterns",
+        "ref": "main"
+      },
+      "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props,..."
+    },
+    {
+      "id": "web-design-guidelines",
+      "category": "javascript",
+      "topic": "design",
+      "default": true,
+      "license": "NONE",
+      "source": {
+        "repo": "vercel-labs/agent-skills",
+        "path": "skills/web-design-guidelines",
+        "ref": "main"
+      },
+      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\"."
+    },
+    {
+      "id": "vercel-react-native-skills",
+      "category": "javascript",
+      "topic": "react-native",
+      "default": false,
+      "license": "NONE",
+      "source": {
+        "repo": "vercel-labs/agent-skills",
+        "path": "skills/react-native-skills",
+        "ref": "main"
+      },
+      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React..."
+    },
+    {
+      "id": "typescript-pro",
+      "category": "javascript",
+      "topic": "language",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/typescript-pro",
+        "ref": "main"
+      },
+      "description": "Implements advanced TypeScript type systems, creates custom type guards, utility types, and branded types, and configures tRPC for end-to-end type safety. Use when building TypeScript applications requiring advanced generics,..."
+    },
+    {
+      "id": "javascript-pro",
+      "category": "javascript",
+      "topic": "language",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/javascript-pro",
+        "ref": "main"
+      },
+      "description": "Writes, debugs, and refactors JavaScript code using modern ES2023+ features, async/await patterns, ESM module systems, and Node.js APIs. Use when building vanilla JavaScript applications, implementing Promise-based async flows,..."
+    },
+    {
+      "id": "react-expert",
+      "category": "javascript",
+      "topic": "react",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/react-expert",
+        "ref": "main"
+      },
+      "description": "Use when building React 18+ applications in .jsx or .tsx files, Next.js App Router projects, or create-react-app setups. Creates components, implements custom hooks, debugs rendering issues, migrates class components to functional, and..."
+    },
+    {
+      "id": "nextjs-developer",
+      "category": "javascript",
+      "topic": "nextjs",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/nextjs-developer",
+        "ref": "main"
+      },
+      "description": "Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke to configure route handlers, implement middleware, set up API routes, add streaming SSR, write generateMetadata for SEO, scaffold..."
+    },
+    {
+      "id": "playwright-expert",
+      "category": "javascript",
+      "topic": "testing",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/playwright-expert",
+        "ref": "main"
+      },
+      "description": "Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke to write test scripts, create page objects, configure test fixtures, set up reporters, add CI integration, implement..."
+    },
+    {
+      "id": "test-master",
+      "category": "javascript",
+      "topic": "testing",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/test-master",
+        "ref": "main"
+      },
+      "description": "Generates test files, creates mocking strategies, analyzes code coverage, designs test architectures, and produces test plans and defect reports across functional, performance, and security testing disciplines. Use when writing unit..."
+    },
+    {
+      "id": "frontend-design",
+      "category": "javascript",
+      "topic": "design",
+      "default": true,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "anthropics/skills",
+        "path": "skills/frontend-design",
+        "ref": "main"
+      },
+      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults."
+    },
+    {
+      "id": "webapp-testing",
+      "category": "javascript",
+      "topic": "testing",
+      "default": true,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "anthropics/skills",
+        "path": "skills/webapp-testing",
+        "ref": "main"
+      },
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs."
+    },
+    {
+      "id": "mcp-builder",
+      "category": "javascript",
+      "topic": "ai",
+      "default": false,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "anthropics/skills",
+        "path": "skills/mcp-builder",
+        "ref": "main"
+      },
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in..."
+    },
+    {
+      "id": "frontend-ui-engineering",
+      "category": "javascript",
+      "topic": "ui",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/frontend-ui-engineering",
+        "ref": "main"
+      },
+      "description": "Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating components, implementing layouts, meeting WCAG accessibility requirements, managing state, or when the..."
+    },
+    {
+      "id": "browser-testing-with-devtools",
+      "category": "javascript",
+      "topic": "testing",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/browser-testing-with-devtools",
+        "ref": "main"
+      },
+      "description": "Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need to inspect the DOM, capture console errors, analyze network requests, profile performance, or verify..."
+    },
+    {
+      "id": "test-driven-development",
+      "category": "general",
+      "topic": "testing",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/test-driven-development",
+        "ref": "main"
+      },
+      "description": "Drives development with tests using the red-green-refactor loop. Use when implementing any logic, fixing any bug, or changing any behavior. Use when you need to prove that code works, when a bug report arrives, or when you're about to..."
+    },
+    {
+      "id": "security-and-hardening",
+      "category": "general",
+      "topic": "security",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/security-and-hardening",
+        "ref": "main"
+      },
+      "description": "Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentication, data storage, or external integrations, or when checking a login flow is safe against the OWASP Top..."
+    },
+    {
+      "id": "code-review-and-quality",
+      "category": "general",
+      "topic": "review",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/code-review-and-quality",
+        "ref": "main"
+      },
+      "description": "Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a human. Use when you need to assess code quality across multiple dimensions before it enters the main..."
+    },
+    {
+      "id": "git-workflow-and-versioning",
+      "category": "general",
+      "topic": "git",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/git-workflow-and-versioning",
+        "ref": "main"
+      },
+      "description": "Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting uncommitted work in a messy working tree into clean atomic commits, opening or reviewing a pull request..."
+    },
+    {
+      "id": "documentation-and-adrs",
+      "category": "general",
+      "topic": "docs",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/documentation-and-adrs",
+        "ref": "main"
+      },
+      "description": "Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design choice, when changing public APIs, shipping features, or when you need to record context that future..."
+    },
+    {
+      "id": "ci-cd-and-automation",
+      "category": "general",
+      "topic": "devops",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/ci-cd-and-automation",
+        "ref": "main"
+      },
+      "description": "Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate quality gates, configure test runners in CI, or establish deployment strategies."
     }
   ]
 }
