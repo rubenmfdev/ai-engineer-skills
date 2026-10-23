@@ -52,7 +52,7 @@ Always grill, even for small tasks, when the request is ambiguous, touches secur
 | Phase | Skill (if installed) | Fallback |
 | --- | --- | --- |
 | Grill | `grill-me` | built-in grill above |
-| Design | `adr-writing`, `spec-driven-development` | options table in chat |
+| Design | `living-specs`, `adr-writing` | options table in chat |
 | Implementation | `tdd` or `test-driven-development`, language skills | red-green-refactor by hand |
 | Testing | `software-testing-fundamentals`, `verification-before-completion` | run the suite, read the output |
 | Validation | `create-pull-request`, `understanding-exam`, `code-review` | PR template in `create-pull-request` |

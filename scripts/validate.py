@@ -59,7 +59,10 @@ def check_external():
             if key not in e:
                 errs.append("external %s: missing %s" % (e.get("id", "?"), key))
         src = e.get("source", {})
-        if not (src.get("repo") and "path" in src and src.get("ref")):
+        if e.get("kind") == "tool":
+            if not (src.get("repo") and e.get("install")):
+                errs.append("external %s: tool needs source.repo and install" % e.get("id"))
+        elif not (src.get("repo") and "path" in src and src.get("ref")):
             errs.append("external %s: source needs repo, path, ref" % e.get("id"))
         if e.get("id") in seen or e.get("id") in local:
             errs.append("external %s: duplicate id" % e.get("id"))

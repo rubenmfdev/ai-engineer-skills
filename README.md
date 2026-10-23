@@ -26,12 +26,13 @@ Skills written in this repo:
 | [extension-security-and-publishing](skills/platforms/chrome-extensions/extension-security-and-publishing) | Chrome extensions | Least-privilege permissions, CSP and Chrome Web Store review |
 | [dev-workflow](skills/workflow/dev-workflow) | Workflow | Phases with gates, grill-me before building, PR and exam before done |
 | [create-pull-request](skills/workflow/create-pull-request) | Workflow | Preflight, PR description template, draft PR via gh |
+| [living-specs](skills/workflow/living-specs) | Workflow | Specs stored in the repo with an index, lifecycle and lint |
 | [understanding-exam](skills/workflow/understanding-exam) | Workflow | Exam for the engineer on the issue and solution |
 | [software-testing-fundamentals](skills/testing/software-testing-fundamentals) | Testing | Black-box, white-box, coverage, test levels, mutation testing |
 | [adr-writing](skills/system-design/adr-writing) | System design | Write and review architecture decision records |
 | [github-actions-ci](skills/devops/github-actions-ci) | DevOps | Fast, secure GitHub Actions pipelines |
 
-Curated external skills: [Workflow](skills/workflow/README.md), [Swift](skills/languages/swift/README.md), [JavaScript](skills/languages/javascript/README.md), [Chrome extensions](skills/platforms/chrome-extensions/README.md). Those skills are maintained by others, so they are linked rather than copied.
+Curated external skills: [Efficiency / tokens](skills/efficiency/README.md), [System design](skills/system-design/README.md), [DevOps](skills/devops/README.md), [Workflow](skills/workflow/README.md), [Swift](skills/languages/swift/README.md), [JavaScript](skills/languages/javascript/README.md), [Chrome extensions](skills/platforms/chrome-extensions/README.md). Those skills are maintained by others, so they are linked rather than copied.
 
 Planned categories: mobile, testing, security, design, AI engineering, git workflow. See [skills/](skills).
 

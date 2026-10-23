@@ -4,6 +4,7 @@ Skills that shape how the agent works: phases, gates, pull requests and comprehe
 ## Our skills
 - [dev-workflow](dev-workflow): phases and gates (analysis, grill, design, implementation, testing, validation, done), scaled to task size.
 - [create-pull-request](create-pull-request): preflight, description template, draft PR via `gh`.
+- [living-specs](living-specs): spec-driven development with specs in `docs/specs/`, an auto-generated index and a lint script, so future agents find them.
 - [understanding-exam](understanding-exam): exam on the issue and solution for the engineer, graded with feedback.
 
 ## Curated external skills (category `workflow`)

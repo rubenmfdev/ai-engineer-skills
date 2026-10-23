@@ -21,9 +21,13 @@ Detect what it uses before choosing. Examples:
 - Architecture or decision-record work -> `system-design`
 
 ## 3. Choose skills
-Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: TDD, security, code review, git, docs), `testing` (testing theory), `workflow` (how the agent works: phases, grill-me, PRs, exam).
+Categories: `swift`, `javascript`, `chrome-extensions`, `system-design`, `devops`, `general` (any language: TDD, security, code review, git, docs), `testing` (testing theory), `workflow` (how the agent works: phases, grill-me, PRs, exam, specs), `efficiency` (tools that cut token usage).
 
 Chrome extension topics: `scaffold`, `development`, `manifest`, `security`, `publishing`, `testing`, `ui`, `framework` (pick the one matching the project's build tool: WXT, Plasmo, CRXJS), `migration`, `assets`, `backend`, `payments`, `debugging`.
+
+System design topics: `architecture`, `api`, `distributed`, `database`, `adr`, `migration`, `performance`.
+
+DevOps topics: `docker`, `terraform`, `kubernetes`, `ci`, `observability`, `incident`, `cost`, `general`.
 
 JavaScript topics: `language`, `react`, `nextjs`, `react-native`, `design`, `ui`, `testing`, `ai`.
 
@@ -47,6 +51,9 @@ python3 scripts/install.py --only swiftui-expert-skill,adr-writing --project-dir
 - Always pass `--copy` when installing from a temporary clone. Without it, local skills are symlinks into the clone and break when it is deleted.
 - External skills are fetched from their authors' repos at install time, pinned by commit in each skill's `.source` file.
 
+
+## Tools (entries with `kind: tool`)
+Some catalog entries, like `graphify` in `efficiency`, are programs, not skill folders. The installer prints their install commands and runs nothing. They install software on the user's machine, so show the commands, say what they do, and run them only after the user agrees. Skip them if the user has not asked about token usage or tooling.
 
 ## 5. Report back
 Tell the user which skills you installed, where each comes from, and anything skipped. Flag skills with `"license": "NONE"` (no declared license) and skills that need extra tools (for example the `asc-*` skills need the `asc` CLI, `ios-debugger-agent` needs XcodeBuildMCP). Suggest restarting the agent session so the new skills load.

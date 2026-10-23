@@ -87,6 +87,8 @@ def print_list(entries, as_json):
     for e in entries:
         src = e["source"].get("local") or e["source"]["repo"]
         flag = "" if e["default"] else " (optional)"
+        if e.get("kind") == "tool":
+            flag += " [tool: run the commands yourself]"
         print("%-34s %-16s %-14s %s%s" % (e["id"], e["category"], e["topic"], src, flag))
         print("    " + e["description"][:150])
 
@@ -96,7 +98,23 @@ def git(*args, cwd=None):
                    stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 
 
+def show_tool(e):
+    print("TOOL %s (%s): not a skill folder, install it yourself." % (e["id"], e["license"]))
+    print("  " + e["description"])
+    for need in e.get("needs", []):
+        print("  needs: %s" % need)
+    for cmd in e["install"]:
+        print("  run:   %s" % cmd)
+    if e.get("usage"):
+        print("  use:   %s" % e["usage"])
+    if e.get("note"):
+        print("  note:  %s" % e["note"])
+
+
 def install(e, dest, clones, tmp, copy, dry):
+    if e.get("kind") == "tool":
+        show_tool(e)
+        return
     out = dest / e["id"]
     src_desc = e["source"].get("local") or "%s/%s" % (e["source"]["repo"], e["source"]["path"])
     if e["license"] == "NONE":
@@ -126,7 +144,8 @@ def install(e, dest, clones, tmp, copy, dry):
         src = target / e["source"]["path"]
         if not (src / "SKILL.md").exists():
             sys.exit("%s has no SKILL.md at %s (catalog out of date?)" % (repo, e["source"]["path"]))
-        shutil.copytree(src, out, ignore=shutil.ignore_patterns(".git"))
+        noise = [".git"] + ([".github", "tests", "node_modules", "assets"] if not e["source"]["path"] else [])
+        shutil.copytree(src, out, ignore=shutil.ignore_patterns(*noise))
         (out / ".source").write_text("https://github.com/%s/tree/%s/%s\n" % (repo, sha, e["source"]["path"]))
     print("installed %-34s <- %s" % (e["id"], src_desc))
 
@@ -175,7 +194,8 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         for e in chosen:
             install(e, dest, clones, tmp, a.copy or "local" not in e["source"], a.dry_run)
-    print("%d skills -> %s" % (len(chosen), dest))
+    tools = sum(1 for e in chosen if e.get("kind") == "tool")
+    print("%d skills -> %s" % (len(chosen) - tools, dest) + ("; %d tool(s) need manual install" % tools if tools else ""))
 
 
 if __name__ == "__main__":

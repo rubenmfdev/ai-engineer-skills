@@ -1462,6 +1462,600 @@
         "ref": "main"
       },
       "description": "Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping. Use when you need a pre-launch checklist, when setting up monitoring, when planning a staged rollout, or..."
+    },
+    {
+      "id": "architecture-patterns",
+      "category": "system-design",
+      "topic": "architecture",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/backend-development/skills/architecture-patterns",
+        "ref": "main"
+      },
+      "description": "Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use this skill when designing clean architecture for a new microservice, when refactoring a monolith to use..."
+    },
+    {
+      "id": "api-design-principles",
+      "category": "system-design",
+      "topic": "api",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/backend-development/skills/api-design-principles",
+        "ref": "main"
+      },
+      "description": "Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers. Use when designing new APIs, reviewing API specifications, or establishing API design standards."
+    },
+    {
+      "id": "microservices-patterns",
+      "category": "system-design",
+      "topic": "distributed",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/backend-development/skills/microservices-patterns",
+        "ref": "main"
+      },
+      "description": "Design microservices architectures with service boundaries, event-driven communication, and resilience patterns. Use when building distributed systems, decomposing monoliths, or implementing microservices."
+    },
+    {
+      "id": "saga-orchestration",
+      "category": "system-design",
+      "topic": "distributed",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/backend-development/skills/saga-orchestration",
+        "ref": "main"
+      },
+      "description": "Implement saga patterns for distributed transactions and cross-aggregate workflows. Use this skill when implementing distributed transactions across microservices where 2PC is unavailable, designing compensating actions for failed order..."
+    },
+    {
+      "id": "architecture-decision-records",
+      "category": "system-design",
+      "topic": "adr",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/documentation-generation/skills/architecture-decision-records",
+        "ref": "main"
+      },
+      "description": "Write and maintain Architecture Decision Records (ADRs) following best practices for technical decision documentation. Use when documenting significant technical decisions, reviewing past architectural choices, or establishing decision..."
+    },
+    {
+      "id": "postgresql-table-design",
+      "category": "system-design",
+      "topic": "database",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/database-design/skills/postgresql-table-design",
+        "ref": "main"
+      },
+      "description": "Use this skill when designing or reviewing a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features"
+    },
+    {
+      "id": "sql-optimization-patterns",
+      "category": "system-design",
+      "topic": "database",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/developer-essentials/skills/sql-optimization-patterns",
+        "ref": "main"
+      },
+      "description": "Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when debugging slow queries, designing database schemas, or optimizing application..."
+    },
+    {
+      "id": "architecture-designer",
+      "category": "system-design",
+      "topic": "architecture",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/architecture-designer",
+        "ref": "main"
+      },
+      "description": "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs,..."
+    },
+    {
+      "id": "microservices-architect",
+      "category": "system-design",
+      "topic": "distributed",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/microservices-architect",
+        "ref": "main"
+      },
+      "description": "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems,..."
+    },
+    {
+      "id": "api-designer",
+      "category": "system-design",
+      "topic": "api",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/api-designer",
+        "ref": "main"
+      },
+      "description": "Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards."
+    },
+    {
+      "id": "database-optimizer",
+      "category": "system-design",
+      "topic": "database",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/database-optimizer",
+        "ref": "main"
+      },
+      "description": "Optimizes database queries and improves performance across PostgreSQL and MySQL systems. Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites,..."
+    },
+    {
+      "id": "api-and-interface-design",
+      "category": "system-design",
+      "topic": "api",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/api-and-interface-design",
+        "ref": "main"
+      },
+      "description": "Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating REST or GraphQL endpoints, defining type contracts between modules, or establishing boundaries between..."
+    },
+    {
+      "id": "deprecation-and-migration",
+      "category": "system-design",
+      "topic": "migration",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/deprecation-and-migration",
+        "ref": "main"
+      },
+      "description": "Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementation to another. Use when migrating a database schema in production, such as renaming or dropping a column..."
+    },
+    {
+      "id": "performance-optimization",
+      "category": "system-design",
+      "topic": "performance",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/performance-optimization",
+        "ref": "main"
+      },
+      "description": "Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when you suspect performance regressions, when Core Web Vitals or load times need improvement, when N+1 query..."
+    },
+    {
+      "id": "codebase-design",
+      "category": "system-design",
+      "topic": "architecture",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/codebase-design",
+        "ref": "main"
+      },
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill..."
+    },
+    {
+      "id": "improve-codebase-architecture",
+      "category": "system-design",
+      "topic": "architecture",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "mattpocock/skills",
+        "path": "skills/engineering/improve-codebase-architecture",
+        "ref": "main"
+      },
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick."
+    },
+    {
+      "id": "docker-project-foundations",
+      "category": "devops",
+      "topic": "docker",
+      "default": true,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "docker/skills",
+        "path": "skills/docker-project-foundations",
+        "ref": "main"
+      },
+      "description": "Use this skill when setting up, initializing, or Dockerizing a project, even if the user doesn't explicitly mention Docker but describes a need for containerized local development, adding a database or cache dependency, or running..."
+    },
+    {
+      "id": "docker-build-strategies",
+      "category": "devops",
+      "topic": "docker",
+      "default": true,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "docker/skills",
+        "path": "skills/docker-build-strategies",
+        "ref": "main"
+      },
+      "description": "Use this skill when writing, reviewing, or optimizing Dockerfiles, even if the user just says their image is too large, their build is slow, or they need to harden a container for production. Covers multi-stage builds, layer caching,..."
+    },
+    {
+      "id": "docker-destructive-guardrails",
+      "category": "devops",
+      "topic": "docker",
+      "default": true,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "docker/skills",
+        "path": "skills/docker-destructive-guardrails",
+        "ref": "main"
+      },
+      "description": "Use this skill before running, or recommending, any Docker command that deletes, wipes, resets, or otherwise irreversibly changes state — even if the user just says to \"clean up\", \"clear the cache\", \"start fresh\", \"wipe everything\",..."
+    },
+    {
+      "id": "docker-compose-patterns",
+      "category": "devops",
+      "topic": "docker",
+      "default": false,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "docker/skills",
+        "path": "skills/docker-compose-patterns",
+        "ref": "main"
+      },
+      "description": "Use this skill when creating, modifying, or debugging Docker Compose configurations, even if the user just says they need to wire services together, add a database to their stack, or set up a local development environment with multiple..."
+    },
+    {
+      "id": "terraform-style-guide",
+      "category": "devops",
+      "topic": "terraform",
+      "default": true,
+      "license": "MPL-2.0",
+      "source": {
+        "repo": "hashicorp/agent-skills",
+        "path": "plugins/terraform/skills/terraform-style-guide",
+        "ref": "main"
+      },
+      "description": "Generate Terraform HCL code following HashiCorp's official style conventions and best practices. Use when writing, reviewing, or generating Terraform configurations."
+    },
+    {
+      "id": "terraform-test",
+      "category": "devops",
+      "topic": "terraform",
+      "default": false,
+      "license": "MPL-2.0",
+      "source": {
+        "repo": "hashicorp/agent-skills",
+        "path": "plugins/terraform/skills/terraform-test",
+        "ref": "main"
+      },
+      "description": "Comprehensive guide for writing and running Terraform tests. Use when creating test files (.tftest.hcl), writing test scenarios with run blocks, validating infrastructure behavior with assertions, mocking providers and data sources,..."
+    },
+    {
+      "id": "refactor-module",
+      "category": "devops",
+      "topic": "terraform",
+      "default": false,
+      "license": "MPL-2.0",
+      "source": {
+        "repo": "hashicorp/agent-skills",
+        "path": "plugins/terraform/skills/refactor-module",
+        "ref": "main"
+      },
+      "description": "Transform monolithic Terraform configurations into reusable, maintainable modules following HashiCorp's module design principles and community best practices."
+    },
+    {
+      "id": "terrashark",
+      "category": "devops",
+      "topic": "terraform",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "LukasNiessen/terrashark",
+        "path": "",
+        "ref": "main"
+      },
+      "description": "Prevent Terraform/OpenTofu hallucinations by diagnosing and fixing failure modes: identity churn, secret exposure, blast-radius mistakes, CI drift, and compliance gate gaps. Use when generating, reviewing, refactoring, or migrating IaC..."
+    },
+    {
+      "id": "terraform-skill",
+      "category": "devops",
+      "topic": "terraform",
+      "default": false,
+      "license": "NOASSERTION",
+      "source": {
+        "repo": "antonbabenko/terraform-skill",
+        "path": "skills/terraform-skill",
+        "ref": "master"
+      },
+      "description": "Use when writing, reviewing, or debugging Terraform/OpenTofu modules, tests, CI, scans, or state ops - diagnoses failure mode (identity churn, secrets, blast radius, CI drift, state corruption) with version-aware guards."
+    },
+    {
+      "id": "kubernetes-skill",
+      "category": "devops",
+      "topic": "kubernetes",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "LukasNiessen/kubernetes-skill",
+        "path": "",
+        "ref": "main"
+      },
+      "description": "Prevent Kubernetes hallucinations by diagnosing and fixing failure modes: insecure workload defaults, resource starvation, network exposure, privilege sprawl, fragile rollouts, and API drift. Use when generating, reviewing, refactoring,..."
+    },
+    {
+      "id": "k8s-debug",
+      "category": "devops",
+      "topic": "kubernetes",
+      "default": false,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "akin-ozer/cc-devops-skills",
+        "path": "devops-skills-plugin/skills/k8s-debug",
+        "ref": "main"
+      },
+      "description": "Diagnose and fix Kubernetes pods, CrashLoopBackOff, Pending, DNS, networking, storage, and rollout failures with kubectl."
+    },
+    {
+      "id": "k8s-security-policies",
+      "category": "devops",
+      "topic": "kubernetes",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/kubernetes-operations/skills/k8s-security-policies",
+        "ref": "main"
+      },
+      "description": "Implement Kubernetes security policies including NetworkPolicy, PodSecurityPolicy, and RBAC for production-grade security. Use when securing Kubernetes clusters, implementing network isolation, or enforcing pod security standards."
+    },
+    {
+      "id": "gitops-workflow",
+      "category": "devops",
+      "topic": "kubernetes",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/kubernetes-operations/skills/gitops-workflow",
+        "ref": "main"
+      },
+      "description": "Implement GitOps workflows with ArgoCD and Flux for automated, declarative Kubernetes deployments with continuous reconciliation. Use when implementing GitOps practices, automating Kubernetes deployments, or setting up declarative..."
+    },
+    {
+      "id": "helm-chart-scaffolding",
+      "category": "devops",
+      "topic": "kubernetes",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/kubernetes-operations/skills/helm-chart-scaffolding",
+        "ref": "main"
+      },
+      "description": "Design, organize, and manage Helm charts for templating and packaging Kubernetes applications with reusable configurations. Use when creating Helm charts, packaging Kubernetes applications, or implementing templated deployments."
+    },
+    {
+      "id": "secrets-management",
+      "category": "devops",
+      "topic": "ci",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/cicd-automation/skills/secrets-management",
+        "ref": "main"
+      },
+      "description": "Implement secure secrets management for CI/CD pipelines using Vault, AWS Secrets Manager, or native platform solutions. Use when handling sensitive credentials, rotating secrets, or securing CI/CD environments."
+    },
+    {
+      "id": "deployment-pipeline-design",
+      "category": "devops",
+      "topic": "ci",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/cicd-automation/skills/deployment-pipeline-design",
+        "ref": "main"
+      },
+      "description": "Design multi-stage CI/CD pipelines with approval gates, security checks, and deployment orchestration. Use this skill when designing zero-downtime deployment pipelines, implementing canary rollout strategies, setting up..."
+    },
+    {
+      "id": "github-actions-templates",
+      "category": "devops",
+      "topic": "ci",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/cicd-automation/skills/github-actions-templates",
+        "ref": "main"
+      },
+      "description": "Create production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Use when setting up CI/CD with GitHub Actions, automating development workflows, or creating reusable workflow templates."
+    },
+    {
+      "id": "github-actions-validator",
+      "category": "devops",
+      "topic": "ci",
+      "default": false,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "akin-ozer/cc-devops-skills",
+        "path": "devops-skills-plugin/skills/github-actions-validator",
+        "ref": "main"
+      },
+      "description": "Validate, lint, audit, fix GitHub Actions workflows (.github/workflows)."
+    },
+    {
+      "id": "dockerfile-validator",
+      "category": "devops",
+      "topic": "docker",
+      "default": false,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "akin-ozer/cc-devops-skills",
+        "path": "devops-skills-plugin/skills/dockerfile-validator",
+        "ref": "main"
+      },
+      "description": "Validate, lint, audit, or scan a Dockerfile for security and best practices."
+    },
+    {
+      "id": "sre-engineer",
+      "category": "devops",
+      "topic": "observability",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/sre-engineer",
+        "ref": "main"
+      },
+      "description": "Defines service level objectives, creates error budget policies, designs incident response procedures, develops capacity models, and produces monitoring configurations and automation scripts for production systems. Use when defining..."
+    },
+    {
+      "id": "monitoring-expert",
+      "category": "devops",
+      "topic": "observability",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/monitoring-expert",
+        "ref": "main"
+      },
+      "description": "Configures monitoring systems, implements structured logging pipelines, creates Prometheus/Grafana dashboards, defines alerting rules, and instruments distributed tracing. Implements Prometheus/Grafana stacks, conducts load testing,..."
+    },
+    {
+      "id": "devops-engineer",
+      "category": "devops",
+      "topic": "general",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Jeffallan/claude-skills",
+        "path": "skills/devops-engineer",
+        "ref": "main"
+      },
+      "description": "Creates Dockerfiles, configures CI/CD pipelines, writes Kubernetes manifests, and generates Terraform/Pulumi infrastructure templates. Handles deployment automation, GitOps configuration, incident response runbooks, and internal..."
+    },
+    {
+      "id": "slo-implementation",
+      "category": "devops",
+      "topic": "observability",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/observability-monitoring/skills/slo-implementation",
+        "ref": "main"
+      },
+      "description": "Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability targets, implementing SRE practices, or measuring service performance."
+    },
+    {
+      "id": "distributed-tracing",
+      "category": "devops",
+      "topic": "observability",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/observability-monitoring/skills/distributed-tracing",
+        "ref": "main"
+      },
+      "description": "Implement distributed tracing with Jaeger and Tempo to track requests across microservices and identify performance bottlenecks. Use when debugging microservices, analyzing request flows, or implementing observability for distributed..."
+    },
+    {
+      "id": "postmortem-writing",
+      "category": "devops",
+      "topic": "incident",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/incident-response/skills/postmortem-writing",
+        "ref": "main"
+      },
+      "description": "Write effective blameless postmortems with root cause analysis, timelines, and action items. Use when conducting incident reviews, writing postmortem documents, or improving incident response processes."
+    },
+    {
+      "id": "incident-runbook-templates",
+      "category": "devops",
+      "topic": "incident",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/incident-response/skills/incident-runbook-templates",
+        "ref": "main"
+      },
+      "description": "Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use this skill when building a service outage runbook for a payment processing system; creating database incident..."
+    },
+    {
+      "id": "cost-optimization",
+      "category": "devops",
+      "topic": "cost",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "wshobson/agents",
+        "path": "plugins/cloud-infrastructure/skills/cost-optimization",
+        "ref": "main"
+      },
+      "description": "Optimize cloud costs across AWS, Azure, GCP, and OCI through resource rightsizing, tagging strategies, reserved instances, and spending analysis. Use when reducing cloud expenses, analyzing infrastructure costs, or implementing cost..."
+    },
+    {
+      "id": "observability-and-instrumentation",
+      "category": "devops",
+      "topic": "observability",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "addyosmani/agent-skills",
+        "path": "skills/observability-and-instrumentation",
+        "ref": "main"
+      },
+      "description": "Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use when shipping any feature that runs in production and you need evidence it works. Use when production issues..."
+    },
+    {
+      "id": "graphify",
+      "kind": "tool",
+      "category": "efficiency",
+      "topic": "tokens",
+      "default": true,
+      "license": "Apache-2.0",
+      "source": {
+        "repo": "Graphify-Labs/graphify"
+      },
+      "description": "Maps a codebase (and docs, PDFs, schemas) into a queryable knowledge graph so the agent queries it instead of grepping through files. Code is parsed locally with tree-sitter, no LLM needed.",
+      "install": [
+        "uv tool install graphifyy",
+        "graphify install --project"
+      ],
+      "needs": [
+        "Python 3.10+",
+        "uv or pipx"
+      ],
+      "usage": "In the agent: /graphify .   Then: graphify query \"<question>\", graphify path A B, graphify explain X",
+      "note": "Run the install commands from the project root. The PyPI package is graphifyy (two y). The README promotes a paid Graphify Cloud; the local CLI is free. Savings numbers are the vendor's claims."
     }
   ]
 }
