@@ -4,7 +4,19 @@ A curated collection of agent skills for software engineers, covering languages,
 
 > Status: early. v1 focuses on **Swift**, **JavaScript/TypeScript** and **Chrome extensions**.
 
+## Use it with your agent
+
+Open your project in Claude Code (or another agent) and say:
+
+> Get all the necessary skills for our project from https://github.com/rubenmfdev/ai-engineer-skills. Follow its AGENTS.md.
+
+The agent clones this repo, looks at your project (Swift, JavaScript, Chrome extension, ...), picks the matching skills and installs them into `./.claude/skills`. See [AGENTS.md](AGENTS.md) for what it does.
+
+The catalog covers skills written here plus a curated set of external ones (SwiftUI, concurrency, testing, security, accessibility, App Store, tooling and more). External skills are fetched from their authors' repos, not copied here. They are listed in [external-skills.json](external-skills.json).
+
 ## Catalog
+
+Skills written in this repo:
 
 | Skill | Category | What it does |
 | --- | --- | --- |
@@ -19,28 +31,28 @@ For SwiftUI, concurrency, testing, Core Data and more, see the [curated Swift sk
 
 Planned categories: mobile, testing, security, design, AI engineering, git workflow. See [skills/](skills).
 
-## Install
+## Install by hand
 
 ```bash
 git clone https://github.com/rubenmfdev/ai-engineer-skills.git
 cd ai-engineer-skills
 
-# Install every skill for Claude Code (user level)
-python3 scripts/install.py --target claude
-
-# Only some skills, copied instead of symlinked
-python3 scripts/install.py --target claude --only swift-concurrency,adr-writing --copy
-
-# Other agents that read SKILL.md folders
-python3 scripts/install.py --dest ~/.some-agent/skills
+python3 scripts/install.py --list                              # browse everything
+python3 scripts/install.py --category swift                    # default Swift skills -> ~/.claude/skills
+python3 scripts/install.py --category swift --topic security,accessibility --project
+python3 scripts/install.py --only swift-clean-architecture,adr-writing --copy
+python3 scripts/install.py --category swift --all              # also optional and alternative skills
+python3 scripts/install.py --category swift --dry-run          # preview only
 ```
 
-Add `--project` to install into the current project (`./.claude/skills`) instead of your home directory.
+`--project` installs into `./.claude/skills` of the current directory (or use `--project-dir DIR`). `--dest <dir>` targets other agents that read `SKILL.md` folders.
 
 ## Repository layout
 
 ```
-skills/<category>/[<group>/]<skill>/SKILL.md   # one folder per skill
+skills/<category>/[<group>/]<skill>/SKILL.md   # one folder per skill (our own)
+external-skills.json                            # curated third-party skills
+AGENTS.md                                       # instructions for agents using this repo
 templates/                                      # skill and AGENTS.md templates
 adapters/                                       # exporters for non-SKILL.md tools
 commands/                                       # slash-command style prompts (later)

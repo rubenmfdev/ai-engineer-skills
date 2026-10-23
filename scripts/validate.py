@@ -49,6 +49,26 @@ def check(skill_md):
     return errs
 
 
+def check_external():
+    import json
+    errs, seen = [], set()
+    local = {s.parent.name for s in (ROOT / "skills").rglob("SKILL.md")}
+    data = json.loads((ROOT / "external-skills.json").read_text(encoding="utf-8"))
+    for e in data["skills"]:
+        for key in ("id", "category", "topic", "default", "license", "source", "description"):
+            if key not in e:
+                errs.append("external %s: missing %s" % (e.get("id", "?"), key))
+        src = e.get("source", {})
+        if not (src.get("repo") and "path" in src and src.get("ref")):
+            errs.append("external %s: source needs repo, path, ref" % e.get("id"))
+        if e.get("id") in seen or e.get("id") in local:
+            errs.append("external %s: duplicate id" % e.get("id"))
+        seen.add(e.get("id"))
+    for e in errs:
+        print("ERROR external-skills.json: %s" % e)
+    return len(errs)
+
+
 def main():
     skills = sorted((ROOT / "skills").rglob("SKILL.md"))
     failed, names = 0, {}
@@ -63,6 +83,7 @@ def main():
         if len(paths) > 1:
             print("ERROR duplicate skill name %s: %s" % (n, ", ".join(map(str, paths))))
             failed += 1
+    failed += check_external()
     print("%d skills checked, %d with errors" % (len(skills), failed))
     return 1 if failed else 0
 

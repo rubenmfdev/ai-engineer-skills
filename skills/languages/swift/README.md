@@ -56,7 +56,14 @@ For everything else, the best skills already exist, so use them instead of re-wr
 
 More lists: [twostraws/Swift-Agent-Skills](https://github.com/twostraws/Swift-Agent-Skills) is a maintained directory, and Apple ships its own agent skills inside Xcode.
 
-## Install the AvdLee skills
+## Install
+Everything below that is marked default in [external-skills.json](../../../external-skills.json) installs with:
+```bash
+python3 scripts/install.py --category swift --project
+python3 scripts/install.py --category swift --topic security,accessibility,store,language,tooling --project
+```
+
+## Install a single skill with the author's own command
 ```bash
 npx skills@latest add https://github.com/avdlee/swift-concurrency-agent-skill --skill swift-concurrency
 ```

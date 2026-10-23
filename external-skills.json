@@ -1,0 +1,577 @@
+{
+  "_comment": "External skills. Local skills are discovered automatically from skills/. default=false means optional or an alternative.",
+  "skills": [
+    {
+      "id": "swiftui-expert-skill",
+      "category": "swift",
+      "topic": "swiftui",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/SwiftUI-Agent-Skill",
+        "path": "skills/swiftui-expert-skill",
+        "ref": "main"
+      },
+      "description": "Use when writing, reviewing, or refactoring SwiftUI code for iOS or macOS, including state and `@Observable` data flow, view composition, resizable layouts, safe areas, display scale, performance, lists, environment, localization,..."
+    },
+    {
+      "id": "swift-concurrency",
+      "category": "swift",
+      "topic": "concurrency",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Swift-Concurrency-Agent-Skill",
+        "path": "skills/swift-concurrency",
+        "ref": "main"
+      },
+      "description": "Diagnose Swift Concurrency issues, refactor callback-based code to async/await, and guide Swift 6 migration when working with tasks, actors, @MainActor, Sendable, data races, thread safety, or concurrency-related compiler and linter..."
+    },
+    {
+      "id": "swift-testing-expert",
+      "category": "swift",
+      "topic": "testing",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Swift-Testing-Agent-Skill",
+        "path": "swift-testing-expert",
+        "ref": "main"
+      },
+      "description": "Expert guidance for Swift Testing: test structure, #expect/#require macros, traits and tags, parameterized tests, test plans, parallel execution, async waiting patterns, and XCTest migration. Use when writing new Swift tests,..."
+    },
+    {
+      "id": "core-data-expert",
+      "category": "swift",
+      "topic": "persistence",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Core-Data-Agent-Skill",
+        "path": "core-data-expert",
+        "ref": "main"
+      },
+      "description": "Expert Core Data guidance (iOS/macOS): stack setup, fetch requests & NSFetchedResultsController, saving/merge conflicts, threading & Swift Concurrency, batch operations & persistent history, migrations, performance, and..."
+    },
+    {
+      "id": "swiftdata-pro",
+      "category": "swift",
+      "topic": "persistence",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "twostraws/SwiftData-Agent-Skill",
+        "path": "swiftdata-pro",
+        "ref": "main"
+      },
+      "description": "Writes, reviews, and improves SwiftData code using modern APIs and best practices. Use when reading, writing, or reviewing projects that use SwiftData."
+    },
+    {
+      "id": "xcode-build-orchestrator",
+      "category": "swift",
+      "topic": "build",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+        "path": "skills/xcode-build-orchestrator",
+        "ref": "main"
+      },
+      "description": "Orchestrate Xcode build optimization by benchmarking first, running the specialist analysis skills, prioritizing findings, requesting explicit approval, delegating approved fixes to xcode-build-fixer, and re-benchmarking after changes...."
+    },
+    {
+      "id": "xcode-build-benchmark",
+      "category": "swift",
+      "topic": "build",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+        "path": "skills/xcode-build-benchmark",
+        "ref": "main"
+      },
+      "description": "Benchmark Xcode clean and incremental builds with repeatable inputs, timing summaries, and timestamped `.build-benchmark/` artifacts. Use when a developer wants a baseline, wants to compare before and after changes, asks to measure..."
+    },
+    {
+      "id": "xcode-compilation-analyzer",
+      "category": "swift",
+      "topic": "build",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+        "path": "skills/xcode-compilation-analyzer",
+        "ref": "main"
+      },
+      "description": "Analyze Swift and mixed-language compile hotspots using build timing summaries and Swift frontend diagnostics, then produce a recommend-first source-level optimization plan. Use when a developer reports slow compilation, type-checking..."
+    },
+    {
+      "id": "xcode-project-analyzer",
+      "category": "swift",
+      "topic": "build",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+        "path": "skills/xcode-project-analyzer",
+        "ref": "main"
+      },
+      "description": "Audit Xcode project configuration, build settings, scheme behavior, and script phases to find build-time improvements with explicit approval gates. Use when a developer wants project-level build analysis, slow incremental builds,..."
+    },
+    {
+      "id": "spm-build-analysis",
+      "category": "swift",
+      "topic": "build",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+        "path": "skills/spm-build-analysis",
+        "ref": "main"
+      },
+      "description": "Analyze Swift Package Manager dependencies, package plugins, module variants, and CI-oriented build overhead that slow Xcode builds. Use when a developer suspects packages, plugins, or dependency graph shape are hurting clean or..."
+    },
+    {
+      "id": "xcode-build-fixer",
+      "category": "swift",
+      "topic": "build",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "AvdLee/Xcode-Build-Optimization-Agent-Skill",
+        "path": "skills/xcode-build-fixer",
+        "ref": "main"
+      },
+      "description": "Apply approved Xcode build optimization changes following best practices, then re-benchmark to verify improvement. Use when a developer has an approved optimization plan from xcode-build-orchestrator, wants to apply specific build..."
+    },
+    {
+      "id": "swiftui-ui-patterns",
+      "category": "swift",
+      "topic": "swiftui",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "swiftui-ui-patterns",
+        "ref": "main"
+      },
+      "description": "Best practices and example-driven guidance for building SwiftUI views and components, including navigation hierarchies, custom view modifiers, and responsive layouts with stacks and grids. Use when creating or refactoring SwiftUI UI,..."
+    },
+    {
+      "id": "swiftui-view-refactor",
+      "category": "swift",
+      "topic": "swiftui",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "swiftui-view-refactor",
+        "ref": "main"
+      },
+      "description": "Refactor and review SwiftUI view files with strong defaults for small dedicated subviews, MV-over-MVVM data flow, stable view trees, explicit dependency injection, and correct Observation usage. Use when cleaning up a SwiftUI view,..."
+    },
+    {
+      "id": "swiftui-performance-audit",
+      "category": "swift",
+      "topic": "swiftui",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "swiftui-performance-audit",
+        "ref": "main"
+      },
+      "description": "Audit and improve SwiftUI runtime performance from code review and architecture. Use for requests to diagnose slow rendering, janky scrolling, high CPU/memory usage, excessive view updates, or layout thrash in SwiftUI apps, and to..."
+    },
+    {
+      "id": "swiftui-liquid-glass",
+      "category": "swift",
+      "topic": "swiftui",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "swiftui-liquid-glass",
+        "ref": "main"
+      },
+      "description": "Implement, review, or improve SwiftUI features using the iOS 26+ Liquid Glass API. Use when asked to adopt Liquid Glass in new SwiftUI UI, refactor an existing feature to Liquid Glass, or review Liquid Glass usage for correctness,..."
+    },
+    {
+      "id": "swift-concurrency-expert",
+      "category": "swift",
+      "topic": "concurrency",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "swift-concurrency-expert",
+        "ref": "main"
+      },
+      "description": "Swift Concurrency review and remediation for Swift 6.2+. Use when asked to review Swift Concurrency usage, improve concurrency compliance, or fix Swift concurrency compiler errors in a feature or file. Concrete actions include adding..."
+    },
+    {
+      "id": "ios-debugger-agent",
+      "category": "swift",
+      "topic": "tooling",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "ios-debugger-agent",
+        "ref": "main"
+      },
+      "description": "Use XcodeBuildMCP to build, run, launch, and debug the current iOS project on a booted simulator. Trigger when asked to run an iOS app, interact with the simulator UI, inspect on-screen state, capture logs/console output, or diagnose..."
+    },
+    {
+      "id": "swiftui-pro",
+      "category": "swift",
+      "topic": "swiftui",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "twostraws/SwiftUI-Agent-Skill",
+        "path": "swiftui-pro",
+        "ref": "main"
+      },
+      "description": "Comprehensively reviews SwiftUI code for best practices on modern APIs, maintainability, and performance. Use when reading, writing, or reviewing SwiftUI projects."
+    },
+    {
+      "id": "swift-concurrency-pro",
+      "category": "swift",
+      "topic": "concurrency",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "twostraws/Swift-Concurrency-Agent-Skill",
+        "path": "swift-concurrency-pro",
+        "ref": "main"
+      },
+      "description": "Reviews Swift code for concurrency correctness, modern API usage, and common async/await pitfalls. Use when reading, writing, or reviewing Swift concurrency code."
+    },
+    {
+      "id": "swift-testing-pro",
+      "category": "swift",
+      "topic": "testing",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "twostraws/Swift-Testing-Agent-Skill",
+        "path": "swift-testing-pro",
+        "ref": "main"
+      },
+      "description": "Writes, reviews, and improves Swift Testing code using modern APIs and best practices. Use when reading, writing, or reviewing projects that use Swift Testing."
+    },
+    {
+      "id": "swift-testing",
+      "category": "swift",
+      "topic": "testing",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "bocato/swift-testing-agent-skill",
+        "path": "swift-testing",
+        "ref": "main"
+      },
+      "description": "Expert guidance on Swift Testing best practices, patterns, and implementation. Use when developers mention: (1) Swift Testing, @Test, #expect, #require, or @Suite, (2) \"use Swift Testing\" or \"modern testing patterns\", (3) test doubles,..."
+    },
+    {
+      "id": "swiftdata-expert-skill",
+      "category": "swift",
+      "topic": "persistence",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "vanab/swiftdata-agent-skill",
+        "path": "swiftdata-expert-skill",
+        "ref": "main"
+      },
+      "description": "Expert guidance for designing, implementing, migrating, and debugging SwiftData persistence in Swift and SwiftUI apps. Use when working with @Model schemas, @Relationship/@Attribute rules, Query or FetchDescriptor data access,..."
+    },
+    {
+      "id": "swift-architecture-skill",
+      "category": "swift",
+      "topic": "architecture",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "efremidze/swift-architecture-skill",
+        "path": "swift-architecture-skill",
+        "ref": "main"
+      },
+      "description": "Swift iOS architecture guidance and playbooks for MVVM, MVI, TCA, Clean Architecture, VIPER, MVP, Coordinator, and Reactive patterns. Use when designing, implementing, refactoring, or reviewing the architecture of a SwiftUI or UIKit..."
+    },
+    {
+      "id": "swift-security-expert",
+      "category": "swift",
+      "topic": "security",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "ivan-magda/swift-security-skill",
+        "path": "swift-security-expert",
+        "ref": "main"
+      },
+      "description": "Use when working with iOS/macOS Keychain Services (SecItem queries, kSecClass, OSStatus errors), biometric authentication (LAContext, Face ID, Touch ID), CryptoKit (AES-GCM, ChaChaPoly, ECDSA, ECDH, HPKE, ML-KEM), Secure Enclave, secure..."
+    },
+    {
+      "id": "ios-code-audit",
+      "category": "swift",
+      "topic": "security",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "jazzychad/ios-code-audit",
+        "path": "",
+        "ref": "main"
+      },
+      "description": "Run a thorough audit of an iOS / macOS Swift codebase — bugs, dead code, duplication, Swift concurrency issues, deprecated APIs, security, performance, and SwiftUI quality — and produce a single navigable CODE_AUDIT.md report with..."
+    },
+    {
+      "id": "ios-accessibility",
+      "category": "swift",
+      "topic": "accessibility",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "dadederk/iOS-Accessibility-Agent-Skill",
+        "path": "ios-accessibility",
+        "ref": "main"
+      },
+      "description": "Expert guidance on iOS accessibility best practices, patterns, and implementation. Use when developers mention: (1) iOS accessibility, VoiceOver, Dynamic Type, or assistive technologies, (2) accessibility labels, traits, hints, or..."
+    },
+    {
+      "id": "appstore-review",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "3paws-ai/mobile-ai-skills",
+        "path": "skills/appstore-review",
+        "ref": "main"
+      },
+      "description": "App Store review readiness audit for iOS apps. Scans the codebase, entitlements, Info.plist, privacy manifests, paywall/subscription UI, and metadata for anything that could trigger a warning or rejection during App Store review. Invoke..."
+    },
+    {
+      "id": "app-store-changelog",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Dimillian/Skills",
+        "path": "app-store-changelog",
+        "ref": "main"
+      },
+      "description": "Create user-facing App Store release notes by collecting and summarizing all user-impacting changes since the last git tag (or a specified ref). Use when asked to generate a comprehensive release changelog, App Store \"What's New\" text,..."
+    },
+    {
+      "id": "asc-cli-usage",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-cli-usage",
+        "ref": "main"
+      },
+      "description": "Guidance for using asc cli in this repo (flags, output formats, pagination, auth, and discovery). Use when asked to run or design asc commands or interact with App Store Connect via the CLI."
+    },
+    {
+      "id": "asc-release-flow",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-release-flow",
+        "ref": "main"
+      },
+      "description": "Orchestrate App Store releases with asc, including staging a version, uploading or building an artifact, publishing, and submitting for review. Use when the user wants to prepare or execute a release. Keep Game Center item preparation..."
+    },
+    {
+      "id": "asc-submission-health",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-submission-health",
+        "ref": "main"
+      },
+      "description": "Diagnose App Store submission blockers and operate review health with asc, including readiness validation, repair routing, status monitoring, cancellation, and retry decisions. Use when validation fails, a version is not in a valid..."
+    },
+    {
+      "id": "asc-testflight-orchestration",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-testflight-orchestration",
+        "ref": "main"
+      },
+      "description": "Orchestrate TestFlight distribution, groups, testers, and What to Test notes using asc. Use when rolling out betas."
+    },
+    {
+      "id": "asc-metadata-sync",
+      "category": "swift",
+      "topic": "store",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-metadata-sync",
+        "ref": "main"
+      },
+      "description": "Sync, validate, and apply App Store metadata and store assets with asc. Use when updating localizations, keywords, App Clip or preview assets, Asset Library media and placements, or migrating legacy fastlane metadata."
+    },
+    {
+      "id": "asc-signing-setup",
+      "category": "swift",
+      "topic": "store",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-signing-setup",
+        "ref": "main"
+      },
+      "description": "Set up bundle IDs, capabilities, signing certificates, provisioning profiles, and encrypted signing sync with the asc cli. Use when onboarding a new app, rotating signing assets, or sharing them across a team."
+    },
+    {
+      "id": "asc-aso-audit",
+      "category": "swift",
+      "topic": "store",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-aso-audit",
+        "ref": "main"
+      },
+      "description": "Run an offline ASO audit on canonical App Store metadata under `./metadata` and surface keyword gaps using Astro MCP. Use after pulling metadata with `asc metadata pull`."
+    },
+    {
+      "id": "asc-whats-new-writer",
+      "category": "swift",
+      "topic": "store",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-whats-new-writer",
+        "ref": "main"
+      },
+      "description": "Generate engaging, localized App Store release notes (What's New) from git log, bullet points, or free text using canonical metadata under `./metadata`. Optionally pairs with promotional text updates."
+    },
+    {
+      "id": "asc-crash-triage",
+      "category": "swift",
+      "topic": "store",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "rudrankriyam/app-store-connect-cli-skills",
+        "path": "skills/asc-crash-triage",
+        "ref": "main"
+      },
+      "description": "Triage TestFlight crashes, beta feedback, and performance diagnostics using asc. Use when the user asks about TF crashes, TestFlight crash reports, beta tester feedback, app hangs, disk writes, launch diagnostics, or wants a crash..."
+    },
+    {
+      "id": "swift-api-design-guidelines-skill",
+      "category": "swift",
+      "topic": "language",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "Erikote04/Swift-API-Design-Guidelines-Agent-Skill",
+        "path": "swift-api-design-guidelines-skill",
+        "ref": "main"
+      },
+      "description": "Write, review, or improve Swift APIs using Swift API Design Guidelines for naming, argument labels, documentation comments, terminology, and general conventions. Use when designing new APIs, refactoring existing interfaces, or reviewing..."
+    },
+    {
+      "id": "swift-format-style",
+      "category": "swift",
+      "topic": "language",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "n0an/Swift-FormatStyle-Agent-Skill",
+        "path": "swift-format-style",
+        "ref": "main"
+      },
+      "description": "Writes and reviews Swift FormatStyle code, replacing legacy Formatter subclasses and C-style String(format:) with modern .formatted() APIs. Use when formatting numbers, dates, durations, measurements, lists, names, byte counts, or URLs."
+    },
+    {
+      "id": "app-intents",
+      "category": "swift",
+      "topic": "platform",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "n0an/App-Intents-Agent-Skill",
+        "path": "app-intents",
+        "ref": "main"
+      },
+      "description": "Writes and reviews Swift App Intents code that exposes app actions and data to Siri, Shortcuts, Spotlight, widgets, Control Center, and Apple Intelligence. Use when adding AppIntent, AppEntity, OpenIntent, AppShortcutsProvider,..."
+    },
+    {
+      "id": "background-execution",
+      "category": "swift",
+      "topic": "platform",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "n0an/Background-Execution-Agent-Skill",
+        "path": "background-execution",
+        "ref": "main"
+      },
+      "description": "Writes and reviews Swift code for background execution on Apple platforms - BGTaskScheduler (app refresh, processing, continued processing), beginBackgroundTask assertions, background URLSession downloads/uploads, silent and VoIP push,..."
+    },
+    {
+      "id": "observability",
+      "category": "swift",
+      "topic": "platform",
+      "default": false,
+      "license": "MIT",
+      "source": {
+        "repo": "n0an/Observability-Agent-Skill",
+        "path": "observability",
+        "ref": "main"
+      },
+      "description": "Writes and reviews Swift observability code on Apple platforms - unified logging (Logger, OSLog, privacy redaction, log levels and persistence), signposts and Instruments, activity tracing, MetricKit metrics and diagnostics (launch,..."
+    },
+    {
+      "id": "ios-simulator-skill",
+      "category": "swift",
+      "topic": "tooling",
+      "default": true,
+      "license": "MIT",
+      "source": {
+        "repo": "conorluddy/ios-simulator-skill",
+        "path": "ios-simulator-skill/skills/ios-simulator-skill",
+        "ref": "main"
+      },
+      "description": "Build, test, and drive iOS apps in the Simulator with 30 token-efficient scripts. Use when asked to build or test an Xcode project, launch an app on a simulator, tap/type/swipe through its UI by accessibility label, take screenshots or..."
+    },
+    {
+      "id": "figma-to-swiftui",
+      "category": "swift",
+      "topic": "tooling",
+      "default": true,
+      "license": "NONE",
+      "source": {
+        "repo": "daetojemax/figma-to-swiftui-skill",
+        "path": "",
+        "ref": "master"
+      },
+      "description": "Implement or update iOS SwiftUI UI from Figma designs; also use for implementation plans, token mapping, or asset export for that UI."
+    }
+  ]
+}
