@@ -2061,14 +2061,15 @@
       "id": "swiftlint",
       "category": "swift",
       "topic": "linting",
-      "default": false,
-      "license": "NOASSERTION",
+      "default": true,
+      "license": "PolyForm-Perimeter-1.0.0",
       "source": {
         "repo": "dpearson2699/swift-ios-skills",
         "path": "skills/swiftlint",
         "ref": "main"
       },
-      "description": "Configures and enforces SwiftLint in Swift projects using build tool plugins, run scripts, and CI. Covers .swiftlint.yml configuration, disabled_rules, opt_in_rules, only_rules, analyzer_rules, baselines, autocorrect, ..."
+      "description": "Configures and enforces SwiftLint in Swift projects using build tool plugins, run scripts, and CI. Covers .swiftlint.yml configuration, disabled_rules, opt_in_rules, only_rules, analyzer_rules, baselines, autocorrect, ...",
+      "note": "Source-available, not open source. You may use it, but it is fetched from the author repo at install time and not redistributed here. Read the license before reuse."
     }
   ]
 }

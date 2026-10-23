@@ -117,8 +117,8 @@ def install(e, dest, clones, tmp, copy, dry):
         return
     out = dest / e["id"]
     src_desc = e["source"].get("local") or "%s/%s" % (e["source"]["repo"], e["source"]["path"])
-    if e["license"] == "NONE":
-        print("  note: %s declares no license; check with the author before redistributing" % e["id"])
+    if e["license"] in ("NONE", "NOASSERTION") or e["license"].startswith("PolyForm"):
+        print("  note: %s has license %s (not a standard open-source license); read it before reusing" % (e["id"], e["license"]))
     if dry:
         print("would install %s from %s -> %s" % (e["id"], src_desc, out))
         return
