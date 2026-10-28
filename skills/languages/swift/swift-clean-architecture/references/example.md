@@ -2,8 +2,8 @@
 
 ## Domain
 ```swift
-// Entity
-struct Order: Identifiable, Equatable, Sendable {
+// Entity (every Domain data object ends in Entity; one type per file)
+struct OrderEntity: Identifiable, Equatable, Sendable {
     let id: String
     let total: Decimal
     let placedAt: Date
@@ -15,18 +15,18 @@ enum OrderError: Error, Sendable { case offline, notFound, unknown }
 
 // Repository protocol (owned by Domain)
 protocol OrderRepository: Sendable {
-    func orders() async throws -> [Order]
+    func orders() async throws -> [OrderEntity]
 }
 
 // Use case type: what view models depend on (and tests fake)
 protocol GetOrdersUseCaseType: Sendable {
-    func execute() async throws -> [Order]
+    func execute() async throws -> [OrderEntity]
 }
 
 // Use case: one public method, `execute`; depends only on repositories or other use cases
 struct GetOrdersUseCase: GetOrdersUseCaseType {
     let repository: OrderRepository
-    func execute() async throws -> [Order] {
+    func execute() async throws -> [OrderEntity] {
         try await repository.orders().sorted { $0.placedAt > $1.placedAt }
     }
 }
@@ -39,13 +39,13 @@ struct PlaceOrderUseCaseInput: Sendable {
 }
 
 protocol PlaceOrderUseCaseType: Sendable {
-    func execute(_ input: PlaceOrderUseCaseInput) async throws -> Order
+    func execute(_ input: PlaceOrderUseCaseInput) async throws -> OrderEntity
 }
 ```
 
 ## Data
 ```swift
-// DTO: matches the API, stays inside Data
+// DTO (every Data layer data object ends in DTO): matches the API, stays inside Data
 struct OrderDTO: Decodable, Sendable {
     let id: String
     let total_cents: Int
@@ -55,16 +55,16 @@ struct OrderDTO: Decodable, Sendable {
 
 // Mapper
 enum OrderMapper {
-    static func map(_ dto: OrderDTO) -> Order {
-        Order(
+    static func map(_ dto: OrderDTO) -> OrderEntity {
+        OrderEntity(
             id: dto.id,
             total: Decimal(dto.total_cents) / 100,
             placedAt: dto.placed_at,
-            status: Order.Status(rawValue: dto.status) ?? .pending
+            status: OrderEntity.Status(rawValue: dto.status) ?? .pending
         )
     }
 }
-private extension Order.Status {
+private extension OrderEntity.Status {
     init?(rawValue: String) {
         switch rawValue {
         case "shipped": self = .shipped
@@ -107,7 +107,7 @@ struct OrderDataRepository: OrderRepository {
     let remote: OrderRemoteDataSource
     let local: OrderLocalDataSource?   // optional cache; the repository decides when to use it
 
-    func orders() async throws -> [Order] {
+    func orders() async throws -> [OrderEntity] {
         do {
             return try await remote.fetchOrders().map(OrderMapper.map)
         } catch let error as URLError where error.code == .notConnectedToInternet {
@@ -125,7 +125,7 @@ struct OrderRow: Identifiable {
     let id: String
     let title: String
     let subtitle: String
-    init(_ order: Order) {
+    init(_ order: OrderEntity) {
         id = order.id
         title = order.total.formatted(.currency(code: "EUR"))
         subtitle = order.placedAt.formatted(date: .abbreviated, time: .omitted)
@@ -168,8 +168,8 @@ final class DIContainer {
 ## Test sketch
 ```swift
 struct FakeOrderRepository: OrderRepository {
-    var result: Result<[Order], OrderError>
-    func orders() async throws -> [Order] { try result.get() }
+    var result: Result<[OrderEntity], OrderError>
+    func orders() async throws -> [OrderEntity] { try result.get() }
 }
 
 @Test @MainActor func showsFailureWhenOffline() async {

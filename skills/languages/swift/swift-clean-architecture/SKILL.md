@@ -18,13 +18,13 @@ Presentation  ->  Domain  <-  Data
 | --- | --- | --- | --- |
 | **View** | Presentation | Render state, forward user actions | Contain business logic or call repositories |
 | **ViewModel** | Presentation | Hold UI state, call use cases through their `UseCaseType` protocols, map results to display models | Import networking or persistence, know DTOs |
-| **Entity** | Domain | Plain business model and rules (`struct`) | Conform to `Codable` for an API, import UIKit/SwiftUI |
+| **Entity** | Domain | Every data object of the Domain is an entity, named `<Name>Entity` (`OrderEntity`, `NewOrderEntity`): a plain `Sendable` struct with its business rules | Be named without the `Entity` suffix, conform to `Codable` for an API, import UIKit/SwiftUI |
 | **UseCaseType** | Domain | Protocol of one use case (`GetOrdersUseCaseType`) with its single `execute` method. What view models depend on, so tests can fake it | Have more than one method |
 | **UseCase** | Domain | One business action, named `<Verb><Noun>UseCase` (`GetOrdersUseCase`), conforming to its `UseCaseType`. Depends only on repository protocols and other use case types | Know about UI, data sources, SDK clients (analytics, clipboard, URL opening...) or storage |
 | **Repository protocol** | Domain | Describes the data the domain needs, in entities | Expose DTOs or framework types |
 | **DataRepository** | Data | The one implementation of the repository protocol (`OrderDataRepository`). Picks and combines data sources behind protocols, maps DTO to Entity, translates errors | Import a persistence or networking framework, touch `ModelContext`/`NSManagedObjectContext`/`URLSession`, or be referenced by Presentation or Domain directly |
 | **DataSource** | Data | Access to one source of truth (remote API, SwiftData/Core Data, cache, Keychain) behind a `<Name>DataSource` protocol. The only place that imports the framework. Returns and accepts DTOs | Contain business rules or return framework types (`@Model`, `NSManagedObject`) |
-| **DTO** | Data | Shape of the wire or DB format (`Codable`) | Leak outside Data |
+| **DTO** | Data | Every data object of the Data layer is a DTO (Data Transfer Object), named `<Name>DTO` (`OrderDTO`, `NewOrderDTO`): the shape of the wire or DB format. Persistence models (`@Model`, `NSManagedObject`) are DTOs too and carry their framework in the name (`OrderSwiftDataDTO`), staying inside their DataSource | Be named without the `DTO` suffix, leak outside Data |
 | **Mapper** | Data (DTO to Entity), Presentation (Entity to display model) | Translate between models | Contain side effects |
 
 ## Rules
@@ -44,7 +44,11 @@ Presentation  ->  Domain  <-  Data
 6. **Errors:** DataSources throw technical errors. The `DataRepository` translates them to domain errors (`enum OrderError`). ViewModels translate domain errors to user messages.
 7. **Dependency injection at the composition root** (app entry or a `DIContainer`). No singletons or `Type.shared` reached from inside layers. Inject protocols through initializers.
 8. **Concurrency:** ViewModels are `@MainActor`. Use cases, repositories and data sources are `Sendable` and nonisolated `async`. Entities and DTOs are `Sendable` value types.
-9. **Models per layer.** Resist reusing one model everywhere. The mapping cost is the price of decoupling. If DTO equals Entity today, keep two types anyway when the API is outside your control.
+9. **Naming and files:**
+   - Domain data objects are **entities**: `<Name>Entity`, including the input-only ones (`NewOrderEntity`) and value objects (`OrderKeyEntity`).
+   - Data layer data objects are **DTOs**: `<Name>DTO`; framework persistence models are `<Name><Framework>DTO` and only their DataSource sees them.
+   - **Each struct, class, enum and protocol lives in its own file, named after the type** (`OrderEntity.swift`, `GetOrdersUseCase.swift`, `GetOrdersUseCaseType.swift`). A private helper type nested inside another type may stay in its parent's file. Tests follow the same rule, including fakes and stubs.
+10. **Models per layer.** Resist reusing one model everywhere. The mapping cost is the price of decoupling. If DTO equals Entity today, keep two types anyway when the API is outside your control.
 
 ## ViewModel shape
 ```swift
@@ -73,7 +77,7 @@ Core/                shared utilities, networking client, design system
 Features/
   Orders/
     Presentation/    OrdersView, OrdersViewModel, OrderRow
-    Domain/          Order, GetOrdersUseCase, GetOrdersUseCaseType, OrderRepository (protocol)
+    Domain/          OrderEntity, GetOrdersUseCase, GetOrdersUseCaseType, OrderRepository (protocol)
     Data/            OrderDataRepository, OrderRemoteDataSource (protocol), URLSessionOrderRemoteDataSource, OrderDTO, OrderMapper
 ```
 For larger apps enforce the dependency rule with the compiler: one Swift Package target per layer (or per feature and layer), with `Domain` having no dependencies. See [references/example.md](references/example.md) for a full vertical slice and a Package.swift sketch.
@@ -93,6 +97,7 @@ Use Swift Testing (`@Test`, `#expect`) for new tests.
 - Does any view or view model reference a DTO or the `DataRepository`?
 - Does a `DataRepository` import SwiftData, Core Data or another framework, or is there more than one implementation of one repository protocol? Move the framework code into a DataSource.
 - Is any `Codable` DTO used as a UI model?
+- Does every Domain data object end in `Entity`, every Data layer one in `DTO`, and does every type have its own file?
 - Are dependencies injected through initializers as protocols?
 - Is business logic hiding in a view, a view model, or a data source?
 - Is every use case doing real work, or is it ceremony?
