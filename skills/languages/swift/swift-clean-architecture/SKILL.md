@@ -9,7 +9,7 @@ Three layers with one rule: **dependencies point inward**. Presentation and Data
 
 ```
 Presentation  ->  Domain  <-  Data
-(View, ViewModel)  (Entity, UseCase,    (RepositoryImpl, DataSource,
+(View, ViewModel)  (Entity, UseCase,    (DataRepository, DataSource,
                     Repository protocol)  DTO, Mapper)
 ```
 
@@ -21,18 +21,21 @@ Presentation  ->  Domain  <-  Data
 | **Entity** | Domain | Plain business model and rules (`struct`) | Conform to `Codable` for an API, import UIKit/SwiftUI |
 | **UseCase** | Domain | One business action (`GetOrdersUseCase`) | Know about UI or storage |
 | **Repository protocol** | Domain | Describes the data the domain needs, in entities | Expose DTOs or framework types |
-| **RepositoryImpl** | Data | Implements the protocol, picks and combines data sources, maps DTO to Entity | Be referenced by Presentation or Domain directly |
-| **DataSource** | Data | One source of truth access (remote API, local DB, cache, Keychain) | Contain business rules |
+| **DataRepository** | Data | The one implementation of the repository protocol (`OrderDataRepository`). Picks and combines data sources behind protocols, maps DTO to Entity, translates errors | Import a persistence or networking framework, touch `ModelContext`/`NSManagedObjectContext`/`URLSession`, or be referenced by Presentation or Domain directly |
+| **DataSource** | Data | Access to one source of truth (remote API, SwiftData/Core Data, cache, Keychain) behind a `<Name>DataSource` protocol. The only place that imports the framework. Returns and accepts DTOs | Contain business rules or return framework types (`@Model`, `NSManagedObject`) |
 | **DTO** | Data | Shape of the wire or DB format (`Codable`) | Leak outside Data |
 | **Mapper** | Data (DTO to Entity), Presentation (Entity to display model) | Translate between models | Contain side effects |
 
 ## Rules
 1. **Domain is pure Swift.** It should compile in a package that imports only `Foundation`.
 2. **Repository protocols live in Domain, implementations in Data.** This is dependency inversion, and what makes everything testable.
+   - There is **exactly one** `DataRepository` per repository protocol (test fakes aside). Never write `SwiftDataOrderRepository` next to `RemoteOrderRepository`.
+   - Variation lives in **DataSources**: `SwiftDataOrderDataSource`, `URLSessionOrderRemoteDataSource`, `InMemoryOrderDataSource`... each conforming to a `<Name>DataSource` protocol. The `DataRepository` is given the data sources it needs (one, or remote plus local cache) and decides how to combine them.
+   - The `DataRepository` file imports only `Foundation`. All framework code (`import SwiftData`, `ModelContext`, `FetchDescriptor`, `import CoreData`, `URLSession`) is inside a DataSource.
 3. **One use case, one job**, exposed as `func execute(...) async throws -> Entity` (or `callAsFunction`). Skip a use case when it would only forward a call and has no logic. Letting the view model call the repository for trivial reads is acceptable if the team agrees and is consistent.
 4. **ViewModels talk to use cases**, never to DTOs, `URLSession`, or Core Data/SwiftData types.
-5. **DTOs never cross the Data boundary.** Map to entities inside the repository implementation.
-6. **Errors:** DataSources throw technical errors. Repository implementations translate them to domain errors (`enum OrderError`). ViewModels translate domain errors to user messages.
+5. **DTOs never cross the Data boundary.** Map to entities inside the `DataRepository`. Persistence models (`@Model` classes, `NSManagedObject`) are DTO-like and not `Sendable`: the DataSource maps them to plain `Sendable` DTO structs, so even the DataRepository never sees them.
+6. **Errors:** DataSources throw technical errors. The `DataRepository` translates them to domain errors (`enum OrderError`). ViewModels translate domain errors to user messages.
 7. **Dependency injection at the composition root** (app entry or a `DIContainer`). No singletons or `Type.shared` reached from inside layers. Inject protocols through initializers.
 8. **Concurrency:** ViewModels are `@MainActor`. Use cases, repositories and data sources are `Sendable` and nonisolated `async`. Entities and DTOs are `Sendable` value types.
 9. **Models per layer.** Resist reusing one model everywhere. The mapping cost is the price of decoupling. If DTO equals Entity today, keep two types anyway when the API is outside your control.
@@ -65,7 +68,7 @@ Features/
   Orders/
     Presentation/    OrdersView, OrdersViewModel, OrderRow
     Domain/          Order, GetOrdersUseCase, OrderRepository (protocol)
-    Data/            OrderRepositoryImpl, OrderRemoteDataSource, OrderDTO, OrderMapper
+    Data/            OrderDataRepository, OrderRemoteDataSource (protocol), URLSessionOrderRemoteDataSource, OrderDTO, OrderMapper
 ```
 For larger apps enforce the dependency rule with the compiler: one Swift Package target per layer (or per feature and layer), with `Domain` having no dependencies. See [references/example.md](references/example.md) for a full vertical slice and a Package.swift sketch.
 
@@ -73,7 +76,7 @@ For larger apps enforce the dependency rule with the compiler: one Swift Package
 | Layer | Test with |
 | --- | --- |
 | Domain (use cases, entities) | Fast unit tests with fake repositories |
-| Data | RepositoryImpl with stub data sources; mappers with fixtures; data sources against a mocked `URLProtocol` or in-memory store |
+| Data | `DataRepository` with stub data sources; mappers with fixtures; data sources against a mocked `URLProtocol` or in-memory store |
 | Presentation | ViewModel tests with fake use cases, assert state transitions |
 | Views | Previews and a few UI/snapshot tests |
 
@@ -81,7 +84,8 @@ Use Swift Testing (`@Test`, `#expect`) for new tests.
 
 ## Review checklist
 - Does any `import` in Domain bring in SwiftUI, UIKit, CoreData, SwiftData, or networking?
-- Does any view or view model reference a DTO or `RepositoryImpl`?
+- Does any view or view model reference a DTO or the `DataRepository`?
+- Does a `DataRepository` import SwiftData, Core Data or another framework, or is there more than one implementation of one repository protocol? Move the framework code into a DataSource.
 - Is any `Codable` DTO used as a UI model?
 - Are dependencies injected through initializers as protocols?
 - Is business logic hiding in a view, a view model, or a data source?

@@ -72,10 +72,24 @@ struct URLSessionOrderRemoteDataSource: OrderRemoteDataSource {
     }
 }
 
-// Repository implementation
-struct OrderRepositoryImpl: OrderRepository {
+// A second data source for the same repository: local storage with SwiftData.
+// Only data sources import SwiftData; they hand out plain DTOs, never `@Model` classes.
+protocol OrderLocalDataSource: Sendable {
+    func cachedOrders() async throws -> [OrderDTO]
+}
+
+@ModelActor
+actor SwiftDataOrderLocalDataSource: OrderLocalDataSource {
+    func cachedOrders() throws -> [OrderDTO] {
+        try modelContext.fetch(FetchDescriptor<OrderRecord>()).map(OrderDTO.init)
+    }
+}
+
+// Repository implementation: the one DataRepository for OrderRepository.
+// It imports only Foundation; framework code lives in the data sources.
+struct OrderDataRepository: OrderRepository {
     let remote: OrderRemoteDataSource
-    // let local: OrderLocalDataSource   // add a cache when needed
+    let local: OrderLocalDataSource?   // optional cache; the repository decides when to use it
 
     func orders() async throws -> [Order] {
         do {
@@ -129,7 +143,7 @@ struct OrdersView: View {
 final class DIContainer {
     private let client = HTTPClient(baseURL: URL(string: "https://api.example.com")!)
     func makeOrdersViewModel() -> OrdersViewModel {
-        let repo = OrderRepositoryImpl(remote: URLSessionOrderRemoteDataSource(client: client))
+        let repo = OrderDataRepository(remote: URLSessionOrderRemoteDataSource(client: client))
         return OrdersViewModel(getOrders: GetOrdersUseCase(repository: repo))
     }
 }
