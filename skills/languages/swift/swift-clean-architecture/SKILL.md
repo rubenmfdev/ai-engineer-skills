@@ -42,12 +42,14 @@ Presentation  ->  Domain  <-  Data
 4. **ViewModels talk to use cases** (through their `UseCaseType` protocols), never to DTOs, `URLSession`, or Core Data/SwiftData types.
 5. **DTOs never cross the Data boundary.** Map to entities inside the `DataRepository`. Persistence models (`@Model` classes, `NSManagedObject`) are DTO-like and not `Sendable`: the DataSource maps them to plain `Sendable` DTO structs, so even the DataRepository never sees them.
 6. **Errors:** DataSources throw technical errors. The `DataRepository` translates them to domain errors (`enum OrderError`). ViewModels translate domain errors to user messages.
-7. **Dependency injection at the composition root** (app entry or a `DIContainer`). No singletons or `Type.shared` reached from inside layers. Inject protocols through initializers.
+7. **Dependency injection:** shared infrastructure (analytics, SDK clients) lives in the app's composition root. Use cases, repositories and data sources are injected into each view model through its designated `init` as protocol types, and a `convenience init` in an extension at the end of the view model's own file (no separate file) builds the real data sources, `DataRepository` and use cases. No singletons or `Type.shared` reached from inside layers; tests and previews call the designated init with mocks.
 8. **Concurrency:** ViewModels are `@MainActor`. Use cases, repositories and data sources are `Sendable` and nonisolated `async`. Entities and DTOs are `Sendable` value types.
 9. **Naming and files:**
    - Domain data objects are **entities**: `<Name>Entity`, including the input-only ones (`NewOrderEntity`) and value objects (`OrderKeyEntity`).
    - Data layer data objects are **DTOs**: `<Name>DTO`; framework persistence models are `<Name><Framework>DTO` and only their DataSource sees them.
    - **Each struct, class, enum and protocol lives in its own file, named after the type** (`OrderEntity.swift`, `GetOrdersUseCase.swift`, `GetOrdersUseCaseType.swift`). A private helper type nested inside another type may stay in its parent's file. Tests follow the same rule, including fakes and stubs.
+   - **Properties and parameters carry their type:** `let parseImportAnswerUseCase: any ParseImportAnswerUseCaseType`, `vocabularyRepository`, `vocabularyLocalDataSource`. Not `parseImportAnswer`, `repository` or `dataSource`.
+   - **Test doubles are named `<Protocol or Type>Mock`** (`GetOrdersUseCaseMock`, `OrderRepositoryMock`, `OrderRemoteDataSourceMock`), never Fake, Spy or Stub.
 10. **Models per layer.** Resist reusing one model everywhere. The mapping cost is the price of decoupling. If DTO equals Entity today, keep two types anyway when the API is outside your control.
 
 ## ViewModel shape

@@ -167,13 +167,13 @@ final class DIContainer {
 
 ## Test sketch
 ```swift
-struct FakeOrderRepository: OrderRepository {
+struct OrderRepositoryMock: OrderRepository {
     var result: Result<[OrderEntity], OrderError>
     func orders() async throws -> [OrderEntity] { try result.get() }
 }
 
 @Test @MainActor func showsFailureWhenOffline() async {
-    let vm = OrdersViewModel(getOrders: GetOrdersUseCase(repository: FakeOrderRepository(result: .failure(.offline))))
+    let vm = OrdersViewModel(getOrders: GetOrdersUseCase(repository: OrderRepositoryMock(result: .failure(.offline))))
     await vm.load()
     guard case .failed = vm.state else { return Issue.record("expected failed") }
 }
