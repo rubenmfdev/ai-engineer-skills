@@ -18,12 +18,28 @@ protocol OrderRepository: Sendable {
     func orders() async throws -> [Order]
 }
 
-// Use case
-struct GetOrdersUseCase: Sendable {
+// Use case type: what view models depend on (and tests fake)
+protocol GetOrdersUseCaseType: Sendable {
+    func execute() async throws -> [Order]
+}
+
+// Use case: one public method, `execute`; depends only on repositories or other use cases
+struct GetOrdersUseCase: GetOrdersUseCaseType {
     let repository: OrderRepository
-    func callAsFunction() async throws -> [Order] {
+    func execute() async throws -> [Order] {
         try await repository.orders().sorted { $0.placedAt > $1.placedAt }
     }
+}
+
+// With more than 2 parameters, take a single input struct
+struct PlaceOrderUseCaseInput: Sendable {
+    let productID: String
+    let quantity: Int
+    let couponCode: String?
+}
+
+protocol PlaceOrderUseCaseType: Sendable {
+    func execute(_ input: PlaceOrderUseCaseInput) async throws -> Order
 }
 ```
 

@@ -17,9 +17,10 @@ Presentation  ->  Domain  <-  Data
 | Piece | Layer | Responsibility | Must not |
 | --- | --- | --- | --- |
 | **View** | Presentation | Render state, forward user actions | Contain business logic or call repositories |
-| **ViewModel** | Presentation | Hold UI state, call use cases, map results to display models | Import networking or persistence, know DTOs |
+| **ViewModel** | Presentation | Hold UI state, call use cases through their `UseCaseType` protocols, map results to display models | Import networking or persistence, know DTOs |
 | **Entity** | Domain | Plain business model and rules (`struct`) | Conform to `Codable` for an API, import UIKit/SwiftUI |
-| **UseCase** | Domain | One business action (`GetOrdersUseCase`) | Know about UI or storage |
+| **UseCaseType** | Domain | Protocol of one use case (`GetOrdersUseCaseType`) with its single `execute` method. What view models depend on, so tests can fake it | Have more than one method |
+| **UseCase** | Domain | One business action, named `<Verb><Noun>UseCase` (`GetOrdersUseCase`), conforming to its `UseCaseType`. Depends only on repository protocols and other use case types | Know about UI, data sources, SDK clients (analytics, clipboard, URL opening...) or storage |
 | **Repository protocol** | Domain | Describes the data the domain needs, in entities | Expose DTOs or framework types |
 | **DataRepository** | Data | The one implementation of the repository protocol (`OrderDataRepository`). Picks and combines data sources behind protocols, maps DTO to Entity, translates errors | Import a persistence or networking framework, touch `ModelContext`/`NSManagedObjectContext`/`URLSession`, or be referenced by Presentation or Domain directly |
 | **DataSource** | Data | Access to one source of truth (remote API, SwiftData/Core Data, cache, Keychain) behind a `<Name>DataSource` protocol. The only place that imports the framework. Returns and accepts DTOs | Contain business rules or return framework types (`@Model`, `NSManagedObject`) |
@@ -32,8 +33,13 @@ Presentation  ->  Domain  <-  Data
    - There is **exactly one** `DataRepository` per repository protocol (test fakes aside). Never write `SwiftDataOrderRepository` next to `RemoteOrderRepository`.
    - Variation lives in **DataSources**: `SwiftDataOrderDataSource`, `URLSessionOrderRemoteDataSource`, `InMemoryOrderDataSource`... each conforming to a `<Name>DataSource` protocol. The `DataRepository` is given the data sources it needs (one, or remote plus local cache) and decides how to combine them.
    - The `DataRepository` file imports only `Foundation`. All framework code (`import SwiftData`, `ModelContext`, `FetchDescriptor`, `import CoreData`, `URLSession`) is inside a DataSource.
-3. **One use case, one job**, exposed as `func execute(...) async throws -> Entity` (or `callAsFunction`). Skip a use case when it would only forward a call and has no logic. Letting the view model call the repository for trivial reads is acceptable if the team agrees and is consistent.
-4. **ViewModels talk to use cases**, never to DTOs, `URLSession`, or Core Data/SwiftData types.
+3. **Use cases follow strict conventions:**
+   - **Naming:** every use case is `<Verb><Noun>UseCase` (`GetOrdersUseCase`, `PlaceOrderUseCase`) and conforms to a `<Verb><Noun>UseCaseType` protocol declared next to it. View models hold `any GetOrdersUseCaseType`, never the concrete type.
+   - **One public method, always `execute`.** Not `callAsFunction`, not `run`, not several methods. Helpers are `private`. One use case, one job.
+   - **Parameters:** `execute` takes at most 2 parameters. With more than 2, create a `<Verb><Noun>UseCaseInput` struct (`PlaceOrderUseCaseInput`) and take that single value.
+   - **Dependencies:** a use case holds only **repository protocols** and **other use case types**. Anything else it needs (opening URLs, clipboard, analytics, SDKs) is wrapped behind a repository, or stays out of the use case.
+   - Do not create a use case that would only forward a call and has no logic; agree as a team how view models read trivial data and stay consistent.
+4. **ViewModels talk to use cases** (through their `UseCaseType` protocols), never to DTOs, `URLSession`, or Core Data/SwiftData types.
 5. **DTOs never cross the Data boundary.** Map to entities inside the `DataRepository`. Persistence models (`@Model` classes, `NSManagedObject`) are DTO-like and not `Sendable`: the DataSource maps them to plain `Sendable` DTO structs, so even the DataRepository never sees them.
 6. **Errors:** DataSources throw technical errors. The `DataRepository` translates them to domain errors (`enum OrderError`). ViewModels translate domain errors to user messages.
 7. **Dependency injection at the composition root** (app entry or a `DIContainer`). No singletons or `Type.shared` reached from inside layers. Inject protocols through initializers.
@@ -46,13 +52,13 @@ Presentation  ->  Domain  <-  Data
 final class OrdersViewModel {
     enum State { case idle, loading, loaded([OrderRow]), failed(String) }
     private(set) var state: State = .idle
-    private let getOrders: GetOrdersUseCase
+    private let getOrders: any GetOrdersUseCaseType
 
-    init(getOrders: GetOrdersUseCase) { self.getOrders = getOrders }
+    init(getOrders: any GetOrdersUseCaseType) { self.getOrders = getOrders }
 
     func load() async {
         state = .loading
-        do { state = .loaded(try await getOrders().map(OrderRow.init)) }
+        do { state = .loaded(try await getOrders.execute().map(OrderRow.init)) }
         catch { state = .failed(Self.message(for: error)) }
     }
 }
@@ -67,7 +73,7 @@ Core/                shared utilities, networking client, design system
 Features/
   Orders/
     Presentation/    OrdersView, OrdersViewModel, OrderRow
-    Domain/          Order, GetOrdersUseCase, OrderRepository (protocol)
+    Domain/          Order, GetOrdersUseCase, GetOrdersUseCaseType, OrderRepository (protocol)
     Data/            OrderDataRepository, OrderRemoteDataSource (protocol), URLSessionOrderRemoteDataSource, OrderDTO, OrderMapper
 ```
 For larger apps enforce the dependency rule with the compiler: one Swift Package target per layer (or per feature and layer), with `Domain` having no dependencies. See [references/example.md](references/example.md) for a full vertical slice and a Package.swift sketch.
@@ -75,9 +81,9 @@ For larger apps enforce the dependency rule with the compiler: one Swift Package
 ## Testing by layer
 | Layer | Test with |
 | --- | --- |
-| Domain (use cases, entities) | Fast unit tests with fake repositories |
+| Domain (use cases, entities) | Fast unit tests with fake repositories (and fake use case types for use cases that call other use cases) |
 | Data | `DataRepository` with stub data sources; mappers with fixtures; data sources against a mocked `URLProtocol` or in-memory store |
-| Presentation | ViewModel tests with fake use cases, assert state transitions |
+| Presentation | ViewModel tests with fake `UseCaseType` conformers, assert state transitions |
 | Views | Previews and a few UI/snapshot tests |
 
 Use Swift Testing (`@Test`, `#expect`) for new tests.
@@ -90,6 +96,7 @@ Use Swift Testing (`@Test`, `#expect`) for new tests.
 - Are dependencies injected through initializers as protocols?
 - Is business logic hiding in a view, a view model, or a data source?
 - Is every use case doing real work, or is it ceremony?
+- Does every use case have a `UseCaseType` protocol, one public `execute`, at most 2 parameters (else a `UseCaseInput` struct), and only repositories or other use cases as dependencies?
 
 ## When not to go this far
 Small apps and prototypes: a View, a `@Observable` model, and one service is enough. Introduce use cases and separate DTOs when logic is reused across screens, the backend is unstable, or several people work in parallel.
